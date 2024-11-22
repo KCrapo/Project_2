@@ -1,5 +1,7 @@
 package com.example.project_2.viewHolders;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -11,6 +13,9 @@ import com.example.project_2.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int LOGGED_OUT = -1;
+    private static final String MAIN_ACTIVITY_USER_ID ="com.example.project_2.viewHolders.MAIN_ACTIVITY_USER_ID" ;
+    int loggedInUserId = -1;
     private ActivityMainBinding binding;
 
     @Override
@@ -20,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //Login Screen
+        loginUser();
+
+        if (loggedInUserId == LOGGED_OUT) {
+            Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
+            startActivity(intent);
+        }
 
 
         // Login Button Connection
@@ -47,6 +60,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void loginUser() {
+
+    }
+
+    static Intent mainActivityIntentFactory(Context context, int userId) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        return intent;
     }
 
     private void toastMaker(String message) {
