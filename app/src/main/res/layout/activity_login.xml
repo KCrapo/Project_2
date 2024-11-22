@@ -5,66 +5,69 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewHolders.LandingPageActivity">
+    tools:context=".viewHolders.LoginActivity">
 
     <TextView
-        android:id="@+id/userNameLandingPageTextView"
-        android:layout_width="358dp"
-        android:layout_height="65dp"
+        android:id="@+id/titleLoginTextView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_margin="16dp"
+        android:layout_marginBottom="24dp"
         android:gravity="center"
-        android:text="@string/username_ph"
+        android:text="@string/dnd_character_tracker"
         android:textSize="42sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/placeHolderCharacterScrollEditText"
-        android:layout_width="376dp"
-        android:layout_height="224dp"
+    <EditText
+        android:id="@+id/userNameLoginEditText"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
         android:layout_margin="16dp"
+        android:autofillHints="Please enter username"
         android:gravity="center"
-        android:text="@string/place_holder_for_scrolling_character_menu"
+        android:hint="@string/username"
+        android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userNameLandingPageTextView" />
+        app:layout_constraintTop_toBottomOf="@id/titleLoginTextView" />
+
+    <EditText
+        android:id="@+id/passwordLoginEditText"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_margin="16dp"
+        android:autofillHints="Please enter a Password"
+        android:gravity="center"
+        android:hint="@string/password"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userNameLoginEditText" />
 
     <Button
-        android:id="@+id/selectCharacterButton"
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_margin="16dp"
-        android:text="@string/view_character"
+        android:text="@string/login"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/placeHolderCharacterScrollEditText" />
+        app:layout_constraintTop_toBottomOf="@id/passwordLoginEditText" />
 
     <Button
-        android:id="@+id/createCharacterButton"
+        android:id="@+id/createAccountButton"
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_margin="16dp"
-        android:text="Create Character"
+        android:text="@string/create_account"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectCharacterButton" />
-
-    <Button
-       android:id="@+id/adminButton"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_margin="16dp"
-        android:text="Admin"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createCharacterButton" />
-
+        app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
