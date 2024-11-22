@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int LOGGED_OUT = -1;
     private static final String MAIN_ACTIVITY_USER_ID ="com.example.project_2.viewHolders.MAIN_ACTIVITY_USER_ID" ;
+    public static final String TAG = "DAC_CHARACTER_CREATOR";
     int loggedInUserId = -1;
     private ActivityMainBinding binding;
 
