@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.project_2.database.entities.User;
@@ -17,13 +16,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = { User.class}, version = 1, exportSchema = false)
-public abstract class CharacterCreatorDatabase extends RoomDatabase {
+public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     public static final String USER_TABLE = "userTable";
 
-    private static final String DATABASE_NAME = "CharacterCreatorDatabase";
+    private static final String DATABASE_NAME = "CharacterTrackerDatabase";
 
-    private static volatile CharacterCreatorDatabase INSTANCE;
+    private static volatile CharacterTrackerDatabase INSTANCE;
 
     private static final int NUMBER_OF_THREADS = 4;
 
@@ -34,18 +33,18 @@ public abstract class CharacterCreatorDatabase extends RoomDatabase {
     // WE have a maximum of 4 threads as shown by NUMBER_OF_THREADS
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static CharacterCreatorDatabase getDatabase(final Context context) {
+    static CharacterTrackerDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
 
             // a keyword that basically means:
             // "Make sure that this class that im supplying on has nothing else working on it"
             // All happening in the same thread/place
 
-            synchronized (CharacterCreatorDatabase.class) {
+            synchronized (CharacterTrackerDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
                                     context.getApplicationContext(),
-                                    CharacterCreatorDatabase.class,
+                                    CharacterTrackerDatabase.class,
                                     DATABASE_NAME)
                             .fallbackToDestructiveMigration()
                             .addCallback(addDefaultValues)
