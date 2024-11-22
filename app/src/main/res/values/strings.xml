@@ -3,4 +3,10 @@
     <string name="dnd_character_editor">DND Character Editor</string>
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>
+    <string name="dnd_character_tracker">DND Character Tracker</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="place_holder_for_scrolling_character_menu">Place Holder for Scrolling Character Menu</string>
+    <string name="username_ph">Username PH</string>
+    <string name="view_character">View Character</string>
 </resources>
