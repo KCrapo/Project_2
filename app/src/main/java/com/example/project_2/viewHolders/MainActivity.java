@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project_2.databinding.ActivityMainBinding;
+import com.example.project_2.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,18 +23,27 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Login Button Connection
-        binding.loginButton.setOnClickListener(new View.OnClickListener() {
+        binding.selectCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toastMaker("Login Button Working!");
+                toastMaker("View Character Button Working!");
             }
         });
 
         // Create Account Button Connection
-        binding.createAccountButton.setOnClickListener(new View.OnClickListener() {
+        binding.createCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toastMaker("Create Account Button Working!");
+                toastMaker("Create Character Button Working!");
+            }
+        });
+
+        // Admin Button Connection
+        // Create Account Button Connection
+        binding.adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toastMaker("Admin Button Working!");
             }
         });
 
