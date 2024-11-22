@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Project_2</string>
+    <string name="dnd_character_editor">DND Character Editor</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
 </resources>
