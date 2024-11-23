@@ -3,13 +3,15 @@ package com.example.project_2.database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.project_2.database.typeConverters.CharacterTrackerDatabase;
+
 import java.util.Objects;
 
 /**
  * This is a Pojo for a user Object necessary for login information
  * tableName is a placeholder until character database has been created
  */
-@Entity(tableName = "UserTable")
+@Entity(tableName = CharacterTrackerDatabase.USER_TABLE)
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int id;
