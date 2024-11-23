@@ -11,7 +11,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.project_2.database.entities.User;
 import com.example.project_2.databinding.ActivityLoginBinding;
-import com.example.project_2.typeConverters.CharacterTrackerRepository;
+import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
 
 public class LoginActivity extends AppCompatActivity {
 

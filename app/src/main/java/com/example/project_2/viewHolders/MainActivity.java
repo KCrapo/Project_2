@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.project_2.R;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.databinding.ActivityMainBinding;
-import com.example.project_2.typeConverters.CharacterTrackerRepository;
+import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.project_2.typeConverters;
+package com.example.project_2.database.typeConverters;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

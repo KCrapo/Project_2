@@ -3,7 +3,7 @@ package com.example.project_2.database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.project_2.typeConverters.CharacterTrackerDatabase;
+import com.example.project_2.database.typeConverters.CharacterTrackerDatabase;
 
 import java.util.Objects;
 
