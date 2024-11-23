@@ -26,14 +26,16 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // initialize repository
+        repository = CharacterTrackerRepository.getRepository(getApplication());
 
-        // Login Button Connection
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toastMaker("Login Button Working!");
+               verifyUser();
             }
         });
+
 
         // Create Account Button Connection
         binding.createAccountButton.setOnClickListener(new View.OnClickListener() {
