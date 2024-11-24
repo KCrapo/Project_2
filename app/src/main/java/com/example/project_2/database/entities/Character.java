@@ -12,7 +12,7 @@ import java.util.Objects;
  * this is a POJO meant to represent the Character Tracker
  */
 
-@Entity(tableName = CharacterTrackerDatabase.CHARACTER_TRACKER_TABLE)
+@Entity(tableName = CharacterTrackerDatabase.CHARACTER_TABLE)
 public class Character {
 
     @PrimaryKey(autoGenerate = true)
