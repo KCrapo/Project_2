@@ -2,6 +2,7 @@ package com.example.project_2.database.typeConverters;
 
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -12,7 +13,7 @@ import com.example.project_2.database.entities.User;
 
 import java.util.List;
 
-
+@Dao
 public interface CharacterDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -22,7 +23,7 @@ public interface CharacterDAO {
     void delete(Character character);
 
     @Query(" SELECT * FROM " + "CharacterTable"+ " ORDER BY name")
-    LiveData<List<User>> getAllUsers();
+    LiveData<List<Character>> getAllCharacters();
 
     @Query("SELECT * from "+ "characterTable"+ " WHERE name == :name")
     LiveData<Character> getCharacterByName(String name);
