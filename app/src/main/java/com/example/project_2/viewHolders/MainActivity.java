@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import com.example.project_2.R;
 import com.example.project_2.database.entities.User;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int LOGGED_OUT = -1;
     private static final String MAIN_ACTIVITY_USER_ID ="com.example.project_2.viewHolders.MAIN_ACTIVITY_USER_ID" ;
     public static final String TAG = "DAC_CHARACTER_CREATOR";
+    private static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.project_2.viewHolders.SAVED_INSTANCE_STATE_USERID_KEY";
     int loggedInUserId = -1;
     private User user;
     private ActivityMainBinding binding;
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         repository = CharacterTrackerRepository.getRepository(getApplication());
 
         //Login Screen
-        loginUser();
+        loginUser(savedInstanceState);
         invalidateOptionsMenu();
 
         if (loggedInUserId == LOGGED_OUT) {
@@ -81,9 +83,39 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loginUser() {
-        loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID,-1);
+    private void loginUser(Bundle savedInstanceState) {
+
+        // check shared preference for loggedInUser
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE);
+
+
+        loggedInUserId = sharedPreferences.getInt(getString(R.string.preference_userId_key), LOGGED_OUT);
+
+
+        if (loggedInUserId == LOGGED_OUT && savedInstanceState != null && savedInstanceState.containsKey(SAVED_INSTANCE_STATE_USERID_KEY)) {
+            loggedInUserId = sharedPreferences.getInt(SAVED_INSTANCE_STATE_USERID_KEY, LOGGED_OUT);
+
+        }
+
+        if (loggedInUserId == LOGGED_OUT) {
+            loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+        }
+
+        if (loggedInUserId == LOGGED_OUT) {
+            return;
+        }
+
+        LiveData<User> userObserver = repository.getUserByUserId(loggedInUserId);
+        userObserver.observe(this, user -> {
+            this.user = user;
+            if (this.user != null) {
+                invalidateOptionsMenu();
+            }
+        });
     }
+
+    //Helper Functions and Intents
 
     static Intent mainActivityIntentFactory(Context context, int userId) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -96,6 +128,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /// OPTIONS MENU CODE////////////
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SAVED_INSTANCE_STATE_USERID_KEY, loggedInUserId);
+        updateSharedPreference();
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -154,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(LoginActivity.loginIntentFactory(getApplicationContext()));
     }
+
+    /// Shared Preferences /////
 
     private void updateSharedPreference() {
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
