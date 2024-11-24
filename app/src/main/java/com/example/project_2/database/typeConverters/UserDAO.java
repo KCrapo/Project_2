@@ -9,6 +9,8 @@ import androidx.room.Query;
 
 import com.example.project_2.database.entities.User;
 
+import java.util.List;
+
 @Dao
 public interface UserDAO {
 
@@ -19,7 +21,7 @@ public interface UserDAO {
     void delete(User user);
 
     @Query(" SELECT * FROM " + "UserTable"+ " ORDER BY username")
-    LiveData<User> getAllUsers();
+    LiveData<List<User>> getAllUsers();
 
     @Query("DELETE from " + "UserTable")
     void deleteAll();

@@ -36,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         // Create Account Button Connection
         binding.createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     toastMaker("Invalid Password");
                     binding.passwordLoginEditText.setSelection(0);
-
                 }
-
             } else {
                 toastMaker(String.format("No user %s is a valid username", username));
                 binding.passwordLoginEditText.setSelection(0);

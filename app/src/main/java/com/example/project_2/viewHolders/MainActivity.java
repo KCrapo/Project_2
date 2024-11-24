@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Login Screen
         loginUser(savedInstanceState);
-        invalidateOptionsMenu();
 
         if (loggedInUserId == LOGGED_OUT) {
             Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
@@ -83,6 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void adminCheck() {
+        if (this.user != null && this.user.isAdmin()) {
+            binding.adminButton.setVisibility(View.VISIBLE);
+        } else {
+            binding.adminButton.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private void loginUser(Bundle savedInstanceState) {
 
         // check shared preference for loggedInUser
@@ -95,22 +102,19 @@ public class MainActivity extends AppCompatActivity {
 
         if (loggedInUserId == LOGGED_OUT && savedInstanceState != null && savedInstanceState.containsKey(SAVED_INSTANCE_STATE_USERID_KEY)) {
             loggedInUserId = sharedPreferences.getInt(SAVED_INSTANCE_STATE_USERID_KEY, LOGGED_OUT);
-
         }
-
         if (loggedInUserId == LOGGED_OUT) {
             loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
         }
-
         if (loggedInUserId == LOGGED_OUT) {
             return;
         }
-
         LiveData<User> userObserver = repository.getUserByUserId(loggedInUserId);
         userObserver.observe(this, user -> {
             this.user = user;
             if (this.user != null) {
                 invalidateOptionsMenu();
+                adminCheck();
             }
         });
     }
@@ -134,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putInt(SAVED_INSTANCE_STATE_USERID_KEY, loggedInUserId);
         updateSharedPreference();
-
     }
 
     @Override
