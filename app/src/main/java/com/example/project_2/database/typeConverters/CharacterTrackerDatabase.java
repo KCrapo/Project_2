@@ -50,7 +50,7 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
                             .addCallback(addDefaultValues)
                             .build();
 
-                    // .fallbackToDestructiveMigration Notes
+
                 }
             }
         }
