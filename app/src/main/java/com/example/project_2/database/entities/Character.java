@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @Entity(tableName = CharacterTrackerDatabase.CHARACTER_TRACKER_TABLE)
-public class CharacterTracker {
+public class Character {
 
     @PrimaryKey(autoGenerate = true)
     private int characterId;
@@ -42,7 +42,7 @@ public class CharacterTracker {
 
     private int inventoryId;
 
-    public CharacterTracker(String name, String race, int level, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int userId, int spellBookId, int inventoryId) {
+    public Character(String name, String race, int level, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int userId, int spellBookId, int inventoryId) {
         this.name = name;
         this.race = race;
         this.level = level;
@@ -82,7 +82,7 @@ public class CharacterTracker {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CharacterTracker that = (CharacterTracker) o;
+        Character that = (Character) o;
         return characterId == that.characterId && userId == that.userId && level == that.level && strength == that.strength && dexterity == that.dexterity && constitution == that.constitution && intelligence == that.intelligence && wisdom == that.wisdom && charisma == that.charisma && spellBookId == that.spellBookId && inventoryId == that.inventoryId && Objects.equals(name, that.name) && Objects.equals(race, that.race);
     }
 
