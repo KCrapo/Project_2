@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".viewHolders.MainActivity">
 
-    <TextView
-        android:id="@+id/userNameLandingPageTextView"
-        android:layout_width="358dp"
-        android:layout_height="65dp"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:text="@string/username_ph"
-        android:textSize="42sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/placeHolderCharacterScrollEditText"
@@ -30,7 +18,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userNameLandingPageTextView" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/selectCharacterButton"
@@ -48,23 +36,22 @@
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_margin="16dp"
-        android:text="Create Character"
+        android:text="@string/create_character"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/selectCharacterButton" />
 
     <Button
-       android:id="@+id/adminButton"
+        android:id="@+id/adminButton"
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_margin="16dp"
-        android:text="Admin"
+        android:text="@string/admin"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/createCharacterButton" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
