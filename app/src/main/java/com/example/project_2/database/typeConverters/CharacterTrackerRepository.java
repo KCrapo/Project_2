@@ -56,7 +56,6 @@ public class CharacterTrackerRepository {
     }
 
     public void insertUser(User... user) {
-        // What is a lambda and how does it work
         CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
             userDAO.insert(user);
         });

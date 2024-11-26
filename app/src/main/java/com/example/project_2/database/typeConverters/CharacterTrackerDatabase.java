@@ -33,6 +33,7 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
 
 
+
     // Create a service that will supply threads to perform database operations
     // Create all at start up and put them in a pool
     // when you need to do database operations pull a thread from the pool
