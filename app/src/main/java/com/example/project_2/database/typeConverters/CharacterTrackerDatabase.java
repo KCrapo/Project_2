@@ -9,14 +9,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.project_2.database.entities.CharacterTracker;
+import com.example.project_2.database.entities.Character;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.viewHolders.MainActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = { User.class, CharacterTracker.class}, version = 1, exportSchema = false)
+@Database(entities = { User.class, Character.class}, version = 1, exportSchema = false)
 public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     public static final String USER_TABLE = "userTable";
@@ -29,7 +29,7 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
 
     // Added for CharacterTracker.java, added by Samuel
-    public static final String CHARACTER_TRACKER_TABLE = "CharacterTrackerTable";
+    public static final String CHARACTER_TABLE = "CharacterTrackerTable";
 
     // Create a service that will supply threads to perform database operations
     // Create all at start up and put them in a pool
