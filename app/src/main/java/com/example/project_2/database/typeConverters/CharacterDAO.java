@@ -9,7 +9,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.project_2.database.entities.Character;
-import com.example.project_2.database.entities.User;
 
 import java.util.List;
 
