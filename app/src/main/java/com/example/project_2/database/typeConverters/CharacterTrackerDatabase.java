@@ -27,9 +27,12 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     private static final int NUMBER_OF_THREADS = 4;
 
+    // Added for Character.java, added by Samuel
+    public static final String CHARACTER_TABLE = "characterTable";
 
-    // Added for CharacterTracker.java, added by Samuel
-    public static final String CHARACTER_TABLE = "CharacterTrackerTable";
+
+
+
 
     // Create a service that will supply threads to perform database operations
     // Create all at start up and put them in a pool
@@ -82,11 +85,25 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
                 User testUser1 = new User("testUser1", "testUser1");
                 dao.insert(testUser1);
             });
+
+            /**
+             * Adding character to test character table in database
+             */
+            databaseWriteExecutor.execute(() -> {
+                CharacterDAO dao = INSTANCE.characterDao();
+                dao.deleteAll();
+                Character character = new Character ("Tav", "Elf", 3, 12, 14, 16, 17, 10, 8, 1, 1, 1);
+                dao.insert(character);
+            });
         }
     };
+
+
 
     public abstract UserDAO userDao();
 
 
+// abstract characterDao
+    public abstract CharacterDAO characterDao();
 
 }
