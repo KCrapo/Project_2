@@ -92,7 +92,7 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 CharacterDAO dao = INSTANCE.characterDao();
                 dao.deleteAll();
-                Character character = new Character ("Tav", "Elf", 3, 12, 14, 16, 17, 10, 8, 1, 1, 1);
+                Character character = new Character ("Tav", "Elf","Barbarian",3, 12, 14, 16, 17, 10, 8, 1);
                 dao.insert(character);
             });
         }

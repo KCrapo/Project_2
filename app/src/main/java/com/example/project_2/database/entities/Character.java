@@ -24,6 +24,8 @@ public class Character {
 
     private String race;
 
+    private String characterClass;
+
     private int level;
 
     private int strength;
@@ -38,13 +40,10 @@ public class Character {
 
     private int charisma;
 
-    private int spellBookId;
-
-    private int inventoryId;
-
-    public Character(String name, String race, int level, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int userId, int spellBookId, int inventoryId) {
+    public Character(String name, String race, String characterClass, int level, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int userId) {
         this.name = name;
         this.race = race;
+        this.characterClass = characterClass;
         this.level = level;
         this.strength = strength;
         this.dexterity = dexterity;
@@ -53,8 +52,6 @@ public class Character {
         this.wisdom = wisdom;
         this.charisma = charisma;
         this.userId = userId;
-        this.spellBookId = spellBookId;
-        this.inventoryId = inventoryId;
     }
 
 
@@ -66,6 +63,7 @@ public class Character {
                 ", userId=" + userId +
                 ", name='" + name + '\'' +
                 ", race='" + race + '\'' +
+                ", characterClass='" + characterClass + '\'' +
                 ", level=" + level +
                 ", strength=" + strength +
                 ", dexterity=" + dexterity +
@@ -73,8 +71,6 @@ public class Character {
                 ", intelligence=" + intelligence +
                 ", wisdom=" + wisdom +
                 ", charisma=" + charisma +
-                ", spellBookId=" + spellBookId +
-                ", inventoryId=" + inventoryId +
                 '}';
     }
 
@@ -82,13 +78,13 @@ public class Character {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Character that = (Character) o;
-        return characterId == that.characterId && userId == that.userId && level == that.level && strength == that.strength && dexterity == that.dexterity && constitution == that.constitution && intelligence == that.intelligence && wisdom == that.wisdom && charisma == that.charisma && spellBookId == that.spellBookId && inventoryId == that.inventoryId && Objects.equals(name, that.name) && Objects.equals(race, that.race);
+        Character character = (Character) o;
+        return characterId == character.characterId && userId == character.userId && level == character.level && strength == character.strength && dexterity == character.dexterity && constitution == character.constitution && intelligence == character.intelligence && wisdom == character.wisdom && charisma == character.charisma && Objects.equals(name, character.name) && Objects.equals(race, character.race) && Objects.equals(characterClass, character.characterClass);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterId, userId, name, race, level, strength, dexterity, constitution, intelligence, wisdom, charisma, spellBookId, inventoryId);
+        return Objects.hash(characterId, userId, name, race, characterClass, level, strength, dexterity, constitution, intelligence, wisdom, charisma);
     }
 
     public int getCharacterId() {
@@ -105,22 +101,6 @@ public class Character {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public int getSpellBookId() {
-        return spellBookId;
-    }
-
-    public void setSpellBookId(int spellBookId) {
-        this.spellBookId = spellBookId;
-    }
-
-    public int getInventoryId() {
-        return inventoryId;
-    }
-
-    public void setInventoryId(int inventoryId) {
-        this.inventoryId = inventoryId;
     }
 
     public String getName() {
@@ -193,5 +173,13 @@ public class Character {
 
     public void setCharisma(int charisma) {
         this.charisma = charisma;
+    }
+
+    public String getCharacterClass() {
+        return characterClass;
+    }
+
+    public void setCharacterClass(String characterClass) {
+        this.characterClass = characterClass;
     }
 }
