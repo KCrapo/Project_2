@@ -27,7 +27,6 @@ public interface CharacterDAO {
     @Query("SELECT * from "+ "characterTable"+ " WHERE name == :name")
     LiveData<Character> getCharacterByName(String name);
 
-
     @Query("DELETE from " + "CharacterTable")
     void deleteAll();
 
