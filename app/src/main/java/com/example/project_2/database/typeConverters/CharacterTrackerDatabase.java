@@ -77,7 +77,7 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
             // when database is created
             databaseWriteExecutor.execute(() -> {
                 UserDAO dao = INSTANCE.userDao();
-                dao.deleteAll(); //be sure to comment this out once we get this running or we will only have the default values
+//                dao.deleteAll(); //be sure to comment this out once we get this running or we will only have the default values
                 User admin = new User("admin1", "admin1");
                 admin.setAdmin(true);
                 dao.insert(admin);
