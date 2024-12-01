@@ -13,4 +13,7 @@
     <string name="preference_userId_key">daclinkPreferencesUserIdKeyDnd</string>
     <string name="create_character">Create Character</string>
     <string name="admin">Admin</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="home">Home</string>
+    <string name="re_enter_password">Re-Enter Password</string>
 </resources>

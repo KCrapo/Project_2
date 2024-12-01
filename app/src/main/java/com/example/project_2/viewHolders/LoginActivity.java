@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               verifyUser();
+                verifyUser();
             }
         });
 
@@ -40,7 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         binding.createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toastMaker("Create Account Button Working!");
+
+                startActivity(CreateAccountActivity.createAccountIntentFactory(getApplicationContext()));
             }
         });
 
