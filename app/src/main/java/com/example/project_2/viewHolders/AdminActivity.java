@@ -9,18 +9,29 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.project_2.R;
+import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
+import com.example.project_2.databinding.ActivityAdminBinding;
+import com.example.project_2.databinding.ActivityCreateAccountBinding;
+import com.example.project_2.databinding.ActivityLoginBinding;
+import com.example.project_2.databinding.ActivityMainBinding;
 
 public class AdminActivity extends AppCompatActivity {
+    private ActivityAdminBinding binding;
+
+    private CharacterTrackerRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Initial setup ///
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_admin);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        binding = ActivityAdminBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // initialize repository
+        repository = CharacterTrackerRepository.getRepository(getApplication());
+
+        //Button Hookups
+
     }
 }

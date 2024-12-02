@@ -7,4 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".viewHolders.AdminActivity">
 
+
+    <TextView
+        android:id="@+id/adminActivityDisplayLabel"
+        android:layout_width="383dp"
+        android:layout_height="203dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/placeholder"
+        android:textSize="42sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/usernameToDeleteEditText"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_margin="16dp"
+        android:autofillHints="Please enter a Username"
+        android:gravity="center"
+        android:hint="@string/username_to_delete"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adminActivityDisplayLabel" />
+
+    <EditText
+        android:id="@+id/usernameToDeleteConfirmEditText"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_margin="16dp"
+        android:autofillHints="Please re-enter Username"
+        android:gravity="center"
+        android:hint="@string/re_enter_username"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usernameToDeleteEditText" />
+
+
+    <Button
+        android:id="@+id/deleteUserAdminActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_margin="16dp"
+        android:text="@string/delete_user"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usernameToDeleteConfirmEditText" />
+
+    <Button
+        android:id="@+id/homeButtonAdminActivity"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_margin="16dp"
+        android:text="@string/home"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deleteUserAdminActivityButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
