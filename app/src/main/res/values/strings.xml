@@ -55,4 +55,8 @@
         <item>Human</item>
         <item>Tiefling</item>
     </string-array>
+    <string name="placeholder">PLACEHOLDER</string>
+    <string name="delete_user">Delete User</string>
+    <string name="username_to_delete">Username to Delete</string>
+    <string name="re_enter_username">Re-Enter Username</string>
 </resources>
