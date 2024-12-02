@@ -19,6 +19,9 @@
             android:name=".viewHolders.CreateAccountActivity"
             android:exported="false" />
         <activity
+            android:name=".viewHolders.CharacterCreationActivity"
+            android:exported="false" />
+        <activity
             android:name=".viewHolders.MainActivity"
             android:exported="false" />
         <activity
