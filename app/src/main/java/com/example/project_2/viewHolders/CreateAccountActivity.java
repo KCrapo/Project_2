@@ -61,6 +61,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    // Account creation function
     private void createAccount() {
         String username = binding.userNameCreateAccountEditText.getText().toString();
         String password = binding.passwordCreateAccountEditText.getText().toString();
