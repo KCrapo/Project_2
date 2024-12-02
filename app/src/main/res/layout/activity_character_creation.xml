@@ -8,7 +8,7 @@
     tools:context=".viewHolders.CharacterCreationActivity">
 
     <TextView
-        android:id="@+id/CharacterCreatorTitle"
+        android:id="@+id/characterCreatorTitle"
         android:layout_width="388dp"
         android:layout_height="58dp"
         android:layout_marginTop="16dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/CharacterNameTextView"
+        android:id="@+id/characterNameTextView"
         android:layout_width="70dp"
         android:layout_height="34dp"
         android:layout_marginTop="28dp"
@@ -32,10 +32,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CharacterCreatorTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/characterCreatorTitle" />
 
     <EditText
-        android:id="@+id/CharacterNameEditText"
+        android:id="@+id/characterNameEditText"
         android:layout_width="276dp"
         android:layout_height="51dp"
         android:layout_marginTop="16dp"
@@ -44,11 +44,11 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@id/CharacterNameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/CharacterCreatorTitle" />
+        app:layout_constraintStart_toEndOf="@id/characterNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/characterCreatorTitle" />
 
     <TextView
-        android:id="@+id/CharacterClassTextView"
+        android:id="@+id/characterClassTextView"
         android:layout_width="70dp"
         android:layout_height="34dp"
         android:layout_marginTop="36dp"
@@ -58,20 +58,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CharacterNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/characterNameTextView" />
 
     <Spinner
-        android:id="@+id/CharacterClassSpinner"
+        android:id="@+id/characterClassSpinner"
         android:layout_width="276dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:spinnerMode="dropdown"
-        app:layout_constraintStart_toEndOf="@id/CharacterClassTextView"
-        app:layout_constraintTop_toBottomOf="@id/CharacterNameEditText" />
+        app:layout_constraintStart_toEndOf="@id/characterClassTextView"
+        app:layout_constraintTop_toBottomOf="@id/characterNameEditText" />
 
     <TextView
-        android:id="@+id/CharacterRaceTextView"
+        android:id="@+id/characterRaceTextView"
         android:layout_width="70dp"
         android:layout_height="34dp"
         android:layout_marginTop="36dp"
@@ -81,20 +81,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CharacterClassTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/characterClassTextView" />
 
     <Spinner
-        android:id="@+id/CharacterRaceSpinner"
+        android:id="@+id/characterRaceSpinner"
         android:layout_width="276dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:spinnerMode="dropdown"
-        app:layout_constraintStart_toEndOf="@id/CharacterRaceTextView"
-        app:layout_constraintTop_toBottomOf="@id/CharacterClassSpinner" />
+        app:layout_constraintStart_toEndOf="@id/characterRaceTextView"
+        app:layout_constraintTop_toBottomOf="@id/characterClassSpinner" />
 
     <Button
-        android:id="@+id/CustomEntryButton"
+        android:id="@+id/customEntryButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
@@ -103,10 +103,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CharacterRaceSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/characterRaceSpinner" />
 
     <Button
-        android:id="@+id/StandardArrayButton"
+        android:id="@+id/standardArrayButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
@@ -115,10 +115,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CharacterRaceSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/characterRaceSpinner" />
 
     <Button
-        android:id="@+id/RollStatsButton"
+        android:id="@+id/rollStatsButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
@@ -127,10 +127,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CharacterRaceSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/characterRaceSpinner" />
 
     <TextView
-        android:id="@+id/StrengthTextView"
+        android:id="@+id/strengthTextView"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="24dp"
@@ -140,10 +140,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RollStatsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/rollStatsButton" />
 
     <TextView
-        android:id="@+id/DexterityTextView"
+        android:id="@+id/dexterityTextView"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="24dp"
@@ -153,10 +153,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StrengthTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/strengthTextView" />
 
     <TextView
-        android:id="@+id/ConstitutionTextView"
+        android:id="@+id/constitutionTextView"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="24dp"
@@ -166,10 +166,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DexterityTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/dexterityTextView" />
 
     <TextView
-        android:id="@+id/IntelligenceTextView"
+        android:id="@+id/intelligenceTextView"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="24dp"
@@ -179,10 +179,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ConstitutionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/constitutionTextView" />
 
     <TextView
-        android:id="@+id/WisdomTextView"
+        android:id="@+id/wisdomTextView"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="28dp"
@@ -192,10 +192,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IntelligenceTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/intelligenceTextView" />
 
     <TextView
-        android:id="@+id/CharismaTextView"
+        android:id="@+id/charismaTextView"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginTop="24dp"
@@ -205,10 +205,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WisdomTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/wisdomTextView" />
 
     <EditText
-        android:id="@+id/StrengthEditText"
+        android:id="@+id/strengthEditText"
         android:layout_width="276dp"
         android:layout_height="42dp"
         android:layout_marginTop="16dp"
@@ -217,11 +217,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@id/StrengthTextView"
-        app:layout_constraintTop_toBottomOf="@+id/RollStatsButton" />
+        app:layout_constraintStart_toEndOf="@id/strengthTextView"
+        app:layout_constraintTop_toBottomOf="@+id/rollStatsButton" />
 
     <EditText
-        android:id="@+id/DexterityEditText"
+        android:id="@+id/dexterityEditText"
         android:layout_width="276dp"
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
@@ -230,11 +230,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@id/DexterityTextView"
-        app:layout_constraintTop_toBottomOf="@+id/StrengthEditText" />
+        app:layout_constraintStart_toEndOf="@id/dexterityTextView"
+        app:layout_constraintTop_toBottomOf="@+id/strengthEditText" />
 
     <EditText
-        android:id="@+id/ConstitutionEditText"
+        android:id="@+id/constitutionEditText"
         android:layout_width="276dp"
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
@@ -243,11 +243,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@id/ConstitutionTextView"
-        app:layout_constraintTop_toBottomOf="@+id/DexterityEditText" />
+        app:layout_constraintStart_toEndOf="@id/constitutionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/dexterityEditText" />
 
     <EditText
-        android:id="@+id/IntelligenceEditText"
+        android:id="@+id/intelligenceEditText"
         android:layout_width="276dp"
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
@@ -256,11 +256,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@id/IntelligenceTextView"
-        app:layout_constraintTop_toBottomOf="@+id/ConstitutionEditText" />
+        app:layout_constraintStart_toEndOf="@id/intelligenceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/constitutionEditText" />
 
     <EditText
-        android:id="@+id/WisdomEditText"
+        android:id="@+id/wisdomEditText"
         android:layout_width="276dp"
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
@@ -269,11 +269,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@id/WisdomTextView"
-        app:layout_constraintTop_toBottomOf="@+id/IntelligenceEditText" />
+        app:layout_constraintStart_toEndOf="@id/wisdomTextView"
+        app:layout_constraintTop_toBottomOf="@+id/intelligenceEditText" />
 
     <EditText
-        android:id="@+id/CharismaEditText"
+        android:id="@+id/charismaEditText"
         android:layout_width="276dp"
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
@@ -282,8 +282,18 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@id/CharismaTextView"
-        app:layout_constraintTop_toBottomOf="@+id/WisdomEditText" />
+        app:layout_constraintStart_toEndOf="@id/charismaTextView"
+        app:layout_constraintTop_toBottomOf="@+id/wisdomEditText" />
+
+    <Button
+        android:id="@+id/createCharacterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/create_character"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/charismaEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
