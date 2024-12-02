@@ -39,7 +39,7 @@ public class AdminActivity extends AppCompatActivity {
         // initialize repository
         repository = CharacterTrackerRepository.getRepository(getApplication());
 
-        //Code to keep track of account using
+        //Code to keep track of userID for returning to landing page.
         int userId = getIntent().getIntExtra("USER_ID", -1);
         if (userId != -1) {
             repository.getUserByUserId(userId).observe(this, user -> {
@@ -62,7 +62,7 @@ public class AdminActivity extends AppCompatActivity {
         binding.homeButtonAdminActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(),userId));
+                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), userId));
             }
         });
 
@@ -80,4 +80,42 @@ public class AdminActivity extends AppCompatActivity {
     private void toastMaker(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    // Delete User
+
+    private void deleteUser() {
+
+        String username = binding.usernameToDeleteEditText.getText().toString();
+        String rUsername = binding.usernameToDeleteConfirmEditText.getText().toString();
+
+
+        // First I need to verify that username and re-entered username are the same
+        // if not return and maketoast("Usernames do not match")
+        if (!username.equals(rUsername)) {
+            toastMaker("Usernames do not match");
+            return;
+        }
+
+        // Then I want to make sure that the verified username exists in the database
+
+        repository.getUserByUserName(username).observe(this, user -> {
+            if (user == null) {
+                // If the user does not exist, show a message
+                toastMaker("User does not exist");
+            } else {
+                // If user exists, confirm deletion
+                // THIS IS WHERE I WANT TO ADD AN ALERT DIALOG
+            }
+        });
+
+
+
+
+        // Delete the user.
+    }
+
+
+    //Display
+    //      REMEMBER THIS LINE TO ADD SCROLLING
+    //binding.adminActivityDisplayLabel.setMovementMethod(new ScrollingMovementMethod());
 }

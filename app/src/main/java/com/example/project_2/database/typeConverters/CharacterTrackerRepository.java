@@ -62,6 +62,12 @@ public class CharacterTrackerRepository {
 
     }
 
+    public void deleteUser(User user) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.delete(user);
+        });
+    }
+
     /**
      *
      * @param character
