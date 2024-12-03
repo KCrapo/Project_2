@@ -78,13 +78,6 @@ public class AdminActivity extends AppCompatActivity {
 
     //Helper Functions
 
-    // In the future I would like to make this function in 1 place and let all of our activities use it
-    private void toastMaker(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    // Delete User
-
     private void deleteUser() {
 
         String username = binding.usernameToDeleteEditText.getText().toString();
@@ -105,14 +98,12 @@ public class AdminActivity extends AppCompatActivity {
                 // If the user does not exist, show a message
                 toastMaker("User does not exist");
             } else {
-                // THIS IS WHERE I WANT TO ADD AN ALERT DIALOG
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(AdminActivity.this);
-                AlertDialog dialog = builder.create();
                 builder.setPositiveButton("Delete User", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // User taps OK button.
                         repository.deleteUser(user);
+                        toastMaker("User has been deleted");
 
                     }
                 });
@@ -122,19 +113,23 @@ public class AdminActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-
-
-
-
-                // Delete user
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
 
     }
 
+    private void toastMaker(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 
     //Display
-    //      REMEMBER THIS LINE TO ADD SCROLLING
+
+    private void updateDisplay(){
+        
+    }
     //binding.adminActivityDisplayLabel.setMovementMethod(new ScrollingMovementMethod());
 }
