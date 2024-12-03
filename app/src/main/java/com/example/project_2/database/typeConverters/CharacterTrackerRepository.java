@@ -21,10 +21,7 @@ public class CharacterTrackerRepository {
     private static CharacterTrackerRepository repository;
 
 
-    /**
-     *
-     * added characterDAO to characterTrackerRepository
-     */
+
     private CharacterTrackerRepository(Application application) {
         CharacterTrackerDatabase db = CharacterTrackerDatabase.getDatabase(application);
         this.userDAO = db.userDao();
@@ -77,14 +74,10 @@ public class CharacterTrackerRepository {
 
     public LiveData<User> getUserByUserName(String username) {
         return (userDAO.getUserByUserName(username));
-
-
     }
 
     public LiveData<User> getUserByUserId(int userId) {
         return (userDAO.getUserByUserId(userId));
-
-
     }
 
 
