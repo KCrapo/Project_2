@@ -50,8 +50,10 @@ public class CharacterCreationActivity extends AppCompatActivity {
         racesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.characterRaceSpinner.setAdapter(racesAdapter);
 
+        //sets the visibility of the stat entry fields to invisible until a button is pressed
         setStatVisibility(NONE);
 
+        //checks if a user is logged in and if so, gets the user
         int userId = getIntent().getIntExtra(CHARACTER_CREATOR_USER_ID, NOT_LOGGED_IN);
         if (userId != -1) {
             repository.getUserByUserId(userId).observe(this, user -> {
@@ -59,16 +61,19 @@ public class CharacterCreationActivity extends AppCompatActivity {
             });
         }
 
+        //Button Hookups
+        // Create Character Button
         binding.createCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Create Character Button Working!", Toast.LENGTH_SHORT).show();
                 checkForEmptyFields();
                 collectCharacterData();
-
+                addCharacterToDatabase();
             }
         });
 
+        // Custom Entry Button - sets the stat entry method to manual entry by the user
         binding.customEntryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +83,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
             }
         });
 
+        // Standard Array Button - sets the stat entry method to the standard array with drop down menus, not implemented
         binding.standardArrayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +91,8 @@ public class CharacterCreationActivity extends AppCompatActivity {
                 currentStatEntryMethod = STANDARD_ARRAY;
             }
         });
+
+        // Roll Stats Button - sets the stat entry method to rolling stats with buttons for dice rolls, not implemented
         binding.rollStatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +101,11 @@ public class CharacterCreationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //this probably isn't necessary as a separate function, but it's here for now
+    private void addCharacterToDatabase() {
+        repository.insertCharacter(character);
     }
 
     private void checkForEmptyFields() {
