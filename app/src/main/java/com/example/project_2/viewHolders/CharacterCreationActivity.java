@@ -70,6 +70,8 @@ public class CharacterCreationActivity extends AppCompatActivity {
                 checkForEmptyFields();
                 collectCharacterData();
                 addCharacterToDatabase();
+                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getId());
+                startActivity(intent);
             }
         });
 
