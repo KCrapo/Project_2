@@ -1,12 +1,14 @@
 package com.example.project_2.viewHolders;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -53,7 +55,7 @@ public class AdminActivity extends AppCompatActivity {
         binding.deleteUserAdminActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toastMaker("Button Working");
+                deleteUser();
 
             }
         });
@@ -103,15 +105,32 @@ public class AdminActivity extends AppCompatActivity {
                 // If the user does not exist, show a message
                 toastMaker("User does not exist");
             } else {
-                // If user exists, confirm deletion
                 // THIS IS WHERE I WANT TO ADD AN ALERT DIALOG
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(AdminActivity.this);
+                AlertDialog dialog = builder.create();
+                builder.setPositiveButton("Delete User", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User taps OK button.
+                        repository.deleteUser(user);
+
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancels the dialog.
+                        dialog.dismiss();
+                    }
+                });
+
+
+
+
+                // Delete user
             }
         });
 
 
-
-
-        // Delete the user.
     }
 
 
