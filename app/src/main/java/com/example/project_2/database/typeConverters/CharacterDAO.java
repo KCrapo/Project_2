@@ -34,4 +34,6 @@ public interface CharacterDAO {
     @Query("SELECT * from "+ "characterTable"+ " WHERE characterId == :characterId")
     LiveData<Character> getCharacterByCharacterId(int characterId);
 
+    @Query("SELECT * FROM " + CharacterTrackerDatabase.CHARACTER_TABLE)
+    List<Character> getAllRecords();
 }

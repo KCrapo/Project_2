@@ -18,9 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
 import com.example.project_2.R;
+import com.example.project_2.database.entities.Character;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.databinding.ActivityMainBinding;
 import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         // setting scroll method for Character view
         binding.placeHolderCharacterScrollEditText.setMovementMethod(new ScrollingMovementMethod());
+
+        updateDisplay();
 
         //Login Screen
         loginUser(savedInstanceState);
@@ -211,5 +216,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         sharedPrefEditor.putInt(getString(R.string.preference_userId_key), loggedInUserId);
         sharedPrefEditor.apply();
+    }
+
+    /// Character View Display ///
+
+    private void updateDisplay() {
+        ArrayList<Character> allLogs = repository.getAllCharacters();
+        if (allLogs.isEmpty()) {
+            binding.placeHolderCharacterScrollEditText.setText("No Characters yet");
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Character character : allLogs) {
+            sb.append(character);
+        }
+        binding.placeHolderCharacterScrollEditText.setText(sb.toString());
     }
 }

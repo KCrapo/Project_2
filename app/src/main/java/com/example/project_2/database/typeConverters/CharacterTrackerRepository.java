@@ -9,6 +9,7 @@ import com.example.project_2.database.entities.User;
 import com.example.project_2.viewHolders.MainActivity;
 import com.example.project_2.database.entities.Character;
 
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -90,6 +91,24 @@ public class CharacterTrackerRepository {
 
     public LiveData<Character> getCharacterByCharacterId(int characterId) {
         return (characterDAO.getCharacterByCharacterId(characterId));
+    }
+
+    public ArrayList<Character> getAllCharacters() {
+        Future<ArrayList<Character>> future = CharacterTrackerDatabase.databaseWriteExecutor.submit(
+                new Callable<ArrayList<Character>>() {
+                    @Override
+                    public ArrayList<Character> call() throws Exception {
+                        return (ArrayList<Character>) characterDAO.getAllRecords();
+                    }
+                }
+        );
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e){
+            e.printStackTrace();
+            Log.i(MainActivity.TAG, "Problem getting all Characters in repository");
+        }
+        return null;
     }
 
 
