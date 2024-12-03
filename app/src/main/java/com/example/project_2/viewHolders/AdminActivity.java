@@ -63,7 +63,6 @@ public class AdminActivity extends AppCompatActivity {
         binding.deleteUserAdminActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // delete user
                 deleteUser();
 
@@ -118,6 +117,7 @@ public class AdminActivity extends AppCompatActivity {
                         repository.deleteUser(user);
                         toastMaker("User has been deleted");
 
+
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -129,8 +129,9 @@ public class AdminActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
+            userObserver.removeObservers(this);
         });
-        userObserver.removeObservers(this);
+
 
     }
 
