@@ -9,14 +9,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.project_2.database.entities.Character;
+import com.example.project_2.database.entities.DNDCharacter;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.viewHolders.MainActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = { User.class, Character.class}, version = 1, exportSchema = false)
+@Database(entities = { User.class, DNDCharacter.class}, version = 2, exportSchema = false)
 public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     public static final String USER_TABLE = "userTable";
@@ -92,7 +92,7 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 CharacterDAO dao = INSTANCE.characterDao();
                 dao.deleteAll();
-                Character character = new Character ("Tav", "Elf","Barbarian",3, 12, 14, 16, 17, 10, 8, 1);
+                DNDCharacter character = new DNDCharacter("Tav", "Elf","Barbarian",3, 12, 14, 16, 17, 10, 8, 1);
                 dao.insert(character);
             });
         }
