@@ -8,18 +8,22 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project_2.database.entities.User;
 import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
 import com.example.project_2.databinding.ActivityCharacterCreationBinding;
 
 public class CharacterCreationActivity extends AppCompatActivity {
-    private static final String CHARACTER_CREATOR_USER_ID = "com.example.project_2.viewHolders.CHARACTER_CREATOR_USER_ID";
     private ActivityCharacterCreationBinding binding;
     private CharacterTrackerRepository repository;
-    private static final String NOT_IMPLEMENTED = "NOT IMPLEMENTED IN THIS VERSION";
+    private User user;
+    //Private static final variables to avoid hard coding
+    private static final int NOT_LOGGED_IN = -1;
     private static final int NONE = 0;
     private static final int CUSTOM_ENTRY = 1;
     private static final int STANDARD_ARRAY = 2;
     private static final int ROLL_STATS = 3;
+    private static final String NOT_IMPLEMENTED = "NOT IMPLEMENTED IN THIS VERSION";
+    private static final String CHARACTER_CREATOR_USER_ID = "com.example.project_2.viewHolders.CHARACTER_CREATOR_USER_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,13 @@ public class CharacterCreationActivity extends AppCompatActivity {
         repository = CharacterTrackerRepository.getRepository(getApplication());
 
         setStatVisibility(NONE);
+
+        int userId = getIntent().getIntExtra(CHARACTER_CREATOR_USER_ID, NOT_LOGGED_IN);
+        if (userId != -1) {
+            repository.getUserByUserId(userId).observe(this, user -> {
+                this.user = user;
+            });
+        }
 
         binding.createCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
