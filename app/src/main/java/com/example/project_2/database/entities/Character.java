@@ -38,6 +38,9 @@ public class Character {
 
     private int charisma;
 
+    private int spellBookId;
+
+    private int inventoryId;
 
     public Character(String name, String race, int level, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int userId, int spellBookId, int inventoryId) {
         this.name = name;
@@ -50,6 +53,8 @@ public class Character {
         this.wisdom = wisdom;
         this.charisma = charisma;
         this.userId = userId;
+        this.spellBookId = spellBookId;
+        this.inventoryId = inventoryId;
     }
 
 
@@ -68,6 +73,8 @@ public class Character {
                 ", intelligence=" + intelligence +
                 ", wisdom=" + wisdom +
                 ", charisma=" + charisma +
+                ", spellBookId=" + spellBookId +
+                ", inventoryId=" + inventoryId +
                 '}';
     }
 
@@ -76,12 +83,12 @@ public class Character {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Character that = (Character) o;
-        return characterId == that.characterId && userId == that.userId && level == that.level && strength == that.strength && dexterity == that.dexterity && constitution == that.constitution && intelligence == that.intelligence && wisdom == that.wisdom && charisma == that.charisma &&  Objects.equals(name, that.name) && Objects.equals(race, that.race);
+        return characterId == that.characterId && userId == that.userId && level == that.level && strength == that.strength && dexterity == that.dexterity && constitution == that.constitution && intelligence == that.intelligence && wisdom == that.wisdom && charisma == that.charisma && spellBookId == that.spellBookId && inventoryId == that.inventoryId && Objects.equals(name, that.name) && Objects.equals(race, that.race);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterId, userId, name, race, level, strength, dexterity, constitution, intelligence, wisdom, charisma);
+        return Objects.hash(characterId, userId, name, race, level, strength, dexterity, constitution, intelligence, wisdom, charisma, spellBookId, inventoryId);
     }
 
     public int getCharacterId() {
@@ -100,6 +107,21 @@ public class Character {
         this.userId = userId;
     }
 
+    public int getSpellBookId() {
+        return spellBookId;
+    }
+
+    public void setSpellBookId(int spellBookId) {
+        this.spellBookId = spellBookId;
+    }
+
+    public int getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(int inventoryId) {
+        this.inventoryId = inventoryId;
+    }
 
     public String getName() {
         return name;

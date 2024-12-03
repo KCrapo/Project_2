@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         // getting an instance of the database
 
         repository = CharacterTrackerRepository.getRepository(getApplication());
+
+        // setting scroll method for Character view
+        binding.placeHolderCharacterScrollEditText.setMovementMethod(new ScrollingMovementMethod());
 
         //Login Screen
         loginUser(savedInstanceState);

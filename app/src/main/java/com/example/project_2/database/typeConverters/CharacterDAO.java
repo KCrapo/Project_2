@@ -16,12 +16,12 @@ import java.util.List;
 public interface CharacterDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Character character);
+    void insert(Character... character);
 
     @Delete
     void delete(Character character);
 
-    @Query(" SELECT * FROM " + "CharacterTable"+ " ORDER BY name")
+    @Query(" SELECT * FROM " + "CharacterTable"+ " ORDER BY name ASC")
     LiveData<List<Character>> getAllCharacters();
 
     @Query("SELECT * from "+ "characterTable"+ " WHERE name == :name")
@@ -33,4 +33,5 @@ public interface CharacterDAO {
 
     @Query("SELECT * from "+ "characterTable"+ " WHERE characterId == :characterId")
     LiveData<Character> getCharacterByCharacterId(int characterId);
+
 }

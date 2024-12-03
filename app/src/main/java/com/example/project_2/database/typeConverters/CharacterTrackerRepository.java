@@ -69,7 +69,7 @@ public class CharacterTrackerRepository {
      * Not sure if I need to change it to be (Character... character),
      * kept getting error when I would try to set it that way
      */
-    public void insertCharacter(Character character) {
+    public void insertCharacter(Character... character) {
         CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
             characterDAO.insert(character);
         });
@@ -98,4 +98,6 @@ public class CharacterTrackerRepository {
     public LiveData<Character> getCharacterByCharacterId(int characterId) {
         return (characterDAO.getCharacterByCharacterId(characterId));
     }
+
+
 }
