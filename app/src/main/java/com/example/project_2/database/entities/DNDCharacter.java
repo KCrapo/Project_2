@@ -1,6 +1,7 @@
 package com.example.project_2.database.entities;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
  */
 
 @Entity(tableName = CharacterTrackerDatabase.CHARACTER_TABLE)
-public class Character {
+public class DNDCharacter {
 
     @PrimaryKey(autoGenerate = true)
     private int characterId;
@@ -40,7 +41,7 @@ public class Character {
 
     private int charisma;
 
-    public Character(String name, String race, String characterClass, int level, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int userId) {
+    public DNDCharacter(String name, String race, String characterClass, int level, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int userId) {
         this.name = name;
         this.race = race;
         this.characterClass = characterClass;
@@ -56,6 +57,7 @@ public class Character {
 
 
 
+    @NonNull
     @Override
     public String toString() {
         return "CharacterTracker{" +
@@ -78,7 +80,7 @@ public class Character {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Character character = (Character) o;
+        DNDCharacter character = (DNDCharacter) o;
         return characterId == character.characterId && userId == character.userId && level == character.level && strength == character.strength && dexterity == character.dexterity && constitution == character.constitution && intelligence == character.intelligence && wisdom == character.wisdom && charisma == character.charisma && Objects.equals(name, character.name) && Objects.equals(race, character.race) && Objects.equals(characterClass, character.characterClass);
     }
 

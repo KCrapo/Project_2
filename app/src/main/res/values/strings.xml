@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Project_2</string>
-    <string name="dnd_character_editor">DND Character Editor</string>
+    <string name="dnd_character_creator">DND Character Creator</string>
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>
     <string name="dnd_character_tracker">DND Character Tracker</string>
@@ -16,6 +16,45 @@
     <string name="sign_up">Sign Up</string>
     <string name="home">Home</string>
     <string name="re_enter_password">Re-Enter Password</string>
+    <string name="name">Name:</string>
+    <string name="characterClass">Class:</string>
+    <string name="race">Race:</string>
+    <string name="manual_entry">Manual Entry</string>
+    <string name="standard_array">Standard Array</string>
+    <string name="roll_stats">Roll Stats</string>
+    <string name="strength">Strength:</string>
+    <string name="dexterity">Dexterity:</string>
+    <string name="constitution">Constitution:</string>
+    <string name="intelligence">Intelligence:</string>
+    <string name="wisdom">Wisdom:</string>
+    <string name="charisma">Charisma:</string>
+    <string-array name="character_classes">
+        <item>Select a Class</item>
+        <item>Barbarian</item>
+        <item>Bard</item>
+        <item>Cleric</item>
+        <item>Druid</item>
+        <item>Fighter</item>
+        <item>Monk</item>
+        <item>Paladin</item>
+        <item>Ranger</item>
+        <item>Rogue</item>
+        <item>Sorcerer</item>
+        <item>Warlock</item>
+        <item>Wizard</item>
+    </string-array>
+    <string-array name="character_race">
+        <item>Select a Race</item>
+        <item>Dragonborn</item>
+        <item>Dwarf</item>
+        <item>Elf</item>
+        <item>Gnome</item>
+        <item>Half-Elf</item>
+        <item>Half-Orc</item>
+        <item>Halfling</item>
+        <item>Human</item>
+        <item>Tiefling</item>
+    </string-array>
     <string name="placeholder">PLACEHOLDER</string>
     <string name="delete_user">Delete User</string>
     <string name="username_to_delete">Username to Delete</string>

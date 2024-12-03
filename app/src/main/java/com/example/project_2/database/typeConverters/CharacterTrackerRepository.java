@@ -5,9 +5,9 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.project_2.database.entities.DNDCharacter;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.viewHolders.MainActivity;
-import com.example.project_2.database.entities.Character;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -70,14 +70,14 @@ public class CharacterTrackerRepository {
 
     /**
      *
-     * @param character
+     * @param DNDCharacter
      * adding insertCharacter function
      * Not sure if I need to change it to be (Character... character),
      * kept getting error when I would try to set it that way
      */
-    public void insertCharacter(Character character) {
+    public void insertCharacter(DNDCharacter DNDCharacter) {
         CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
-            characterDAO.insert(character);
+            characterDAO.insert(DNDCharacter);
         });
     }
 
@@ -97,11 +97,11 @@ public class CharacterTrackerRepository {
     /**
      *Added methods to get characters by charactername and character ID
      */
-    public LiveData<Character> getCharacterByName(String name) {
+    public LiveData<DNDCharacter> getCharacterByName(String name) {
         return (characterDAO.getCharacterByName(name));
     }
 
-    public LiveData<Character> getCharacterByCharacterId(int characterId) {
+    public LiveData<DNDCharacter> getCharacterByCharacterId(int characterId) {
         return (characterDAO.getCharacterByCharacterId(characterId));
     }
 }

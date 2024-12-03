@@ -8,7 +8,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.project_2.database.entities.Character;
+import com.example.project_2.database.entities.DNDCharacter;
 
 import java.util.List;
 
@@ -16,20 +16,20 @@ import java.util.List;
 public interface CharacterDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Character character);
+    void insert(DNDCharacter character);
 
     @Delete
-    void delete(Character character);
+    void delete(DNDCharacter character);
 
-    @Query(" SELECT * FROM " + "CharacterTable"+ " ORDER BY name")
-    LiveData<List<Character>> getAllCharacters();
+    @Query(" SELECT * FROM " + "characterTable"+ " ORDER BY name")
+    LiveData<List<DNDCharacter>> getAllCharacters();
 
     @Query("SELECT * from "+ "characterTable"+ " WHERE name == :name")
-    LiveData<Character> getCharacterByName(String name);
+    LiveData<DNDCharacter> getCharacterByName(String name);
 
-    @Query("DELETE from " + "CharacterTable")
+    @Query("DELETE from " + "characterTable")
     void deleteAll();
 
     @Query("SELECT * from "+ "characterTable"+ " WHERE characterId == :characterId")
-    LiveData<Character> getCharacterByCharacterId(int characterId);
+    LiveData<DNDCharacter> getCharacterByCharacterId(int characterId);
 }
