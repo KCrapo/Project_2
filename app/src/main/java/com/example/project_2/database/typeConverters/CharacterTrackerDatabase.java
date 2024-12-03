@@ -94,6 +94,9 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
                 dao.deleteAll();
                 Character character = new Character ("Tav", "Elf", 3, 12, 14, 16, 17, 10, 8, 1, 1, 1);
                 dao.insert(character);
+
+                Character c2 = new Character ("Durge", "Halfling", 6, 13, 8, 9, 7, 15, 18, 1, 2, 2);
+                dao.insert(c2);
             });
         }
     };

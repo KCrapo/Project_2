@@ -61,21 +61,7 @@ public class Character {
 
     @Override
     public String toString() {
-        return "CharacterTracker{" +
-                "characterId=" + characterId +
-                ", userId=" + userId +
-                ", name='" + name + '\'' +
-                ", race='" + race + '\'' +
-                ", level=" + level +
-                ", strength=" + strength +
-                ", dexterity=" + dexterity +
-                ", constitution=" + constitution +
-                ", intelligence=" + intelligence +
-                ", wisdom=" + wisdom +
-                ", charisma=" + charisma +
-                ", spellBookId=" + spellBookId +
-                ", inventoryId=" + inventoryId +
-                '}';
+        return name + " - " + race + " - Level " + level + '\n' + '\n';
     }
 
     @Override
