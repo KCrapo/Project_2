@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,7 @@ import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
 import com.example.project_2.databinding.ActivityCharacterViewBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterViewActivity extends AppCompatActivity {
 
@@ -50,9 +52,7 @@ public class CharacterViewActivity extends AppCompatActivity {
 
     }
 
-    private void updateCharacterDropDown() {
 
-    }
 
 
 

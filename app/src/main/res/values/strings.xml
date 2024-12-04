@@ -69,4 +69,5 @@
     <string name="wis">Wis</string>
     <string name="cha">Cha</string>
     <string name="inventory">Inventory</string>
+    <string name="goHome">Home</string>
 </resources>

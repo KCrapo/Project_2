@@ -34,5 +34,5 @@ public interface CharacterDAO {
     LiveData<DNDCharacter> getCharacterByCharacterId(int characterId);
 
     @Query("SELECT * FROM " + "characterTable" + " WHERE userId == :userId")
-    LiveData<DNDCharacter> getAllCharactersByUserId(int userId);
+    LiveData<List<DNDCharacter>> getAllCharactersByUserId(int userId);
 }

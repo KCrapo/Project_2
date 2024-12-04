@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,9 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
 import com.example.project_2.R;
+import com.example.project_2.database.entities.DNDCharacter;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.databinding.ActivityMainBinding;
 import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -213,4 +218,33 @@ public class MainActivity extends AppCompatActivity {
         sharedPrefEditor.putInt(getString(R.string.preference_userId_key), loggedInUserId);
         sharedPrefEditor.apply();
     }
+
+
+    /// Dropdown Character Selection Menu ///
+    private void updateCharacterDropDown() {
+        repository.getAllCharactersByUserId(user.getId()).observe(this, characters -> {
+            List<String> characterList = new ArrayList<>();
+
+            characterList.add("character1");
+            characterList.add("character2");
+            characterList.add("character3");
+            if (characters != null && !characters.isEmpty()) {
+                for (DNDCharacter character : characters) {
+//                    StringBuilder quickCharacter = new StringBuilder();
+//                    quickCharacter.append(character.getName() + " - " + character.getRace() + " " + character.getCharacterClass());
+                    characterList.add(character.getName());
+                }
+
+                // creating dropdown for Characters
+                ArrayAdapter<String> characterAdapter = new ArrayAdapter<>(MainActivity.this,
+                        android.R.layout.simple_spinner_item, characterList);
+
+                characterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                binding.CharacterSelectionSpinner.setAdapter(characterAdapter);
+            }
+
+        });
+    }
+
 }

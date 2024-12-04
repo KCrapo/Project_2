@@ -118,5 +118,8 @@ public class CharacterTrackerRepository {
         return (characterDAO.getCharacterByCharacterId(characterId));
     }
 
+    public LiveData<List<DNDCharacter>> getAllCharactersByUserId(int userId) {
+        return (characterDAO.getAllCharactersByUserId(userId));
+    }
 
 }
