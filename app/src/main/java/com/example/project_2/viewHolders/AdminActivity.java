@@ -6,25 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.LiveData;
 
 import com.example.project_2.R;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
 import com.example.project_2.databinding.ActivityAdminBinding;
-import com.example.project_2.databinding.ActivityCreateAccountBinding;
-import com.example.project_2.databinding.ActivityLoginBinding;
-import com.example.project_2.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
@@ -55,7 +51,7 @@ public class AdminActivity extends AppCompatActivity {
         }
 
         // display usernames
-        displayUsernames();
+        updateDropdownUsernames();
 
         //Button Hookups
 
@@ -65,9 +61,7 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // delete user
                 deleteUser();
-
-                // update display
-                displayUsernames();
+                updateDropdownUsernames();
 
             }
         });
@@ -92,19 +86,19 @@ public class AdminActivity extends AppCompatActivity {
 
     private void deleteUser() {
 
-        String username = binding.usernameToDeleteEditText.getText().toString();
-        String rUsername = binding.usernameToDeleteConfirmEditText.getText().toString();
+        // Get the selected username from the Spinner
+        Spinner spinner = findViewById(R.id.userNameDropDown);
+        String selectedUsername = spinner.getSelectedItem().toString();
 
-
-        // First I need to verify that username and re-entered username are the same
-        // if not return and maketoast("Usernames do not match")
-        if (!username.equals(rUsername)) {
-            toastMaker("Usernames do not match");
+        // Check if the selected username is valid (non-empty)
+        if (selectedUsername.isEmpty() || selectedUsername.equals("No users found")) {
+            toastMaker("No valid username selected");
             return;
         }
 
+
         // Then I want to make sure that the verified username exists in the database
-        LiveData<User> userObserver = repository.getUserByUserName(username);
+        LiveData<User> userObserver = repository.getUserByUserName(selectedUsername);
         userObserver.observe(this, user -> {
             if (user == null) {
                 // If the user does not exist, show a message
@@ -169,5 +163,28 @@ public class AdminActivity extends AppCompatActivity {
 
 
     }
+
+    private void updateDropdownUsernames() {
+        repository.getAllUsers().observe(this, users -> {
+            List<String> userList = new ArrayList<>();
+            userList.add("Username");
+            if (users != null && !users.isEmpty()) {
+                for (User user : users) {
+                    userList.add(user.getUserName());
+                }
+
+                // Create an arrayadapter to add user list to dropdown
+                ArrayAdapter<String> userAdapter = new ArrayAdapter<>(AdminActivity.this,
+                        android.R.layout.simple_spinner_item, userList);
+
+                //Set the layout for the dropdown
+                userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                //
+                binding.userNameDropDown.setAdapter(userAdapter);
+            }
+        });
+    }
+
 
 }
