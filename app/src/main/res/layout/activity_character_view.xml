@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewHolders.CharacterViewActivity">
+
+    <TextView
+        android:id="@+id/characterViewNameTextView"
+        android:layout_width="408dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:text="Name, level, race, class"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CharacterViewStrengthTextView"
+        android:layout_width="68dp"
+        android:layout_height="80dp"
+        android:text="Str"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textSize="25dp"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewDexterityTextView"
+        />
+
+    <TextView
+        android:id="@+id/CharacterViewDexterityTextView"
+        android:layout_width="68dp"
+        android:layout_height="80dp"
+        android:text="Dex"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewStrengthTextView"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewConstitutionTextView"
+        />
+
+    <TextView
+        android:id="@+id/CharacterViewConstitutionTextView"
+        android:layout_width="68dp"
+        android:layout_height="80dp"
+        android:text="Con"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textSize="25dp"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewDexterityTextView"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewIntelligenceTextView"
+        />
+
+    <TextView
+        android:id="@+id/CharacterViewIntelligenceTextView"
+        android:layout_width="68dp"
+        android:layout_height="80dp"
+        android:text="Int"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textSize="25dp"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewConstitutionTextView"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewWisdomTextView"
+        />
+
+    <TextView
+        android:id="@+id/CharacterViewWisdomTextView"
+        android:layout_width="68dp"
+        android:layout_height="80dp"
+        android:text="Wis"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textSize="25dp"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewIntelligenceTextView"
+        />
+
+    <TextView
+        android:id="@+id/CharacterViewCharismaTextView"
+        android:layout_width="68dp"
+        android:layout_height="80dp"
+        android:text="Str"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textSize="25dp"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewWisdomTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/CharacterViewInventoryButton"
+        android:layout_width="164dp"
+        android:layout_height="48dp"
+        android:text="Inventory"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewStrengthTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="25dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

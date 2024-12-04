@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
         binding.selectCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toastMaker("View Character Button Working!");
+                Intent intent = CharacterViewActivity.characterViewIntentFactory(getApplicationContext(), loggedInUserId);
+                startActivity(intent);
+                //toastMaker("View Character Button Working!");
             }
         });
 
