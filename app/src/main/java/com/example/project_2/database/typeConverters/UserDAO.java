@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.project_2.database.entities.User;
 
@@ -31,4 +32,7 @@ public interface UserDAO {
 
     @Query("SELECT * from "+ "UserTable"+ " WHERE id == :userId ")
     LiveData<User> getUserByUserId(int userId);
+
+    @Update
+    void updateUser(User user);
 }
