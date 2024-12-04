@@ -98,6 +98,10 @@ public class AdminActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.userNameDropDown);
         String selectedUsername = spinner.getSelectedItem().toString();
 
+        if(selectedUsername.split(" ").length >0){
+            selectedUsername = selectedUsername.split(" ")[0];
+        }
+
         // Empty Check
         if (selectedUsername.isEmpty() || selectedUsername == null) {
             toastMaker("No valid username selected");
