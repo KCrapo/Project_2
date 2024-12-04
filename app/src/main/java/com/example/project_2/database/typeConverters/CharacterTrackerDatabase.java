@@ -16,7 +16,7 @@ import com.example.project_2.viewHolders.MainActivity;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = { User.class, DNDCharacter.class}, version = 2, exportSchema = false)
+@Database(entities = { User.class, DNDCharacter.class}, version = 1, exportSchema = false)
 public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     public static final String USER_TABLE = "userTable";
