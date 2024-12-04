@@ -224,7 +224,7 @@ public class AdminActivity extends AppCompatActivity {
                 toastMaker("User does not exist");
             } else {
                 user.setAdmin(true);
-                repository.updateUser(user);
+                repository.insertUser(user);
             }
             updateDropdownUsernames();
             userObserver.removeObservers(this);
