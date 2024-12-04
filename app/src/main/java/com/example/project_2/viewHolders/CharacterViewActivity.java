@@ -18,6 +18,8 @@ import com.example.project_2.database.entities.User;
 import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
 import com.example.project_2.databinding.ActivityCharacterViewBinding;
 
+import java.util.ArrayList;
+
 public class CharacterViewActivity extends AppCompatActivity {
 
     private ActivityCharacterViewBinding binding;
@@ -45,6 +47,10 @@ public class CharacterViewActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Inventory button working!", Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    private void updateCharacterDropDown() {
 
     }
 

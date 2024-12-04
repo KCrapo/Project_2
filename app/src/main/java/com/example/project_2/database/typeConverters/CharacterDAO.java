@@ -32,4 +32,7 @@ public interface CharacterDAO {
 
     @Query("SELECT * from "+ "characterTable"+ " WHERE characterId == :characterId")
     LiveData<DNDCharacter> getCharacterByCharacterId(int characterId);
+
+    @Query("SELECT * FROM " + "characterTable" + " WHERE userId == :userId")
+    LiveData<DNDCharacter> getAllCharactersByUserId(int userId);
 }
