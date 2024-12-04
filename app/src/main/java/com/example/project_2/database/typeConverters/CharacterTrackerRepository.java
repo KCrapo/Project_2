@@ -97,6 +97,14 @@ public class CharacterTrackerRepository {
         return userDAO.getAllUsers();
     }
 
+    public void updateUser(User user) {
+       // I tried this without the new thread statement and it said i wasn't allowed to do this on main thread
+        // I looked this up as a potential solution. It works but I want to know if this is something standard
+        new Thread(() -> {
+            userDAO.updateUser(user);
+        }).start();
+    }
+
 
     /**
      *Added methods to get characters by charactername and character ID
@@ -108,4 +116,6 @@ public class CharacterTrackerRepository {
     public LiveData<DNDCharacter> getCharacterByCharacterId(int characterId) {
         return (characterDAO.getCharacterByCharacterId(characterId));
     }
+
+
 }

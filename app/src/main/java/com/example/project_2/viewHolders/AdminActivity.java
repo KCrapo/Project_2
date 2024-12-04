@@ -74,6 +74,14 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        // Set Admin button
+        binding.setUserAdminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setAdmin();
+            }
+        });
+
     }
 
     // Intent Factory
@@ -90,8 +98,8 @@ public class AdminActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.userNameDropDown);
         String selectedUsername = spinner.getSelectedItem().toString();
 
-        // Check if the selected username is valid (non-empty)
-        if (selectedUsername.isEmpty() || selectedUsername.equals("No users found")) {
+        // Empty Check
+        if (selectedUsername.isEmpty() || selectedUsername == null) {
             toastMaker("No valid username selected");
             return;
         }
@@ -135,7 +143,7 @@ public class AdminActivity extends AppCompatActivity {
 
 
     //Display
-
+    @Deprecated
     private void displayUsernames() {
         repository.getAllUsers().observe(this, users -> {
             // check to see if list is empty or null
@@ -167,10 +175,18 @@ public class AdminActivity extends AppCompatActivity {
     private void updateDropdownUsernames() {
         repository.getAllUsers().observe(this, users -> {
             List<String> userList = new ArrayList<>();
+
+            // Want the list to include username first to act as a drop down menu signifier
             userList.add("Username");
             if (users != null && !users.isEmpty()) {
                 for (User user : users) {
-                    userList.add(user.getUserName());
+                    if (user.isAdmin()) {
+                        StringBuilder addAdmin = new StringBuilder();
+                        addAdmin.append(user.getUserName()).append(" - Admin");
+                        userList.add(addAdmin.toString());
+                    } else {
+                        userList.add(user.getUserName());
+                    }
                 }
 
                 // Create an arrayadapter to add user list to dropdown
@@ -183,6 +199,32 @@ public class AdminActivity extends AppCompatActivity {
                 //
                 binding.userNameDropDown.setAdapter(userAdapter);
             }
+        });
+    }
+
+    private void setAdmin() {
+        // Get the selected username from the Spinner
+        Spinner spinner = findViewById(R.id.userNameDropDown);
+        String selectedUsername = spinner.getSelectedItem().toString();
+
+        // Empty Check
+        if (selectedUsername.isEmpty() || selectedUsername == null) {
+            toastMaker("No valid username selected");
+            return;
+        }
+
+        LiveData<User> userObserver = repository.getUserByUserName(selectedUsername);
+        userObserver.observe(this, user -> {
+            if (user == null) {
+                // If the user does not exist, show a message
+                toastMaker("User does not exist");
+            } else {
+                user.setAdmin(true);
+                repository.updateUser(user);
+            }
+            updateDropdownUsernames();
+            userObserver.removeObservers(this);
+
         });
     }
 
