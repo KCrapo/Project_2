@@ -61,4 +61,15 @@
     <string name="re_enter_username">Re-Enter Username</string>
     <string name="select_user_to_modify">Select user to modify</string>
     <string name="set_admin">Set Admin</string>
+    <string name="dex">Dex</string>
+    <string name="str">Str</string>
+    <string name="con">Con</string>
+    <string name="intel">Int</string>
+    <string name="wis">Wis</string>
+    <string name="cha">Cha</string>
+    <string name="inventory">Inventory</string>
+    <string name="goHome">home</string>
+    <string name="name_level_race_class">Name, level, race, class</string>
+    <string name="base_value">Base value</string>
+    <string name="bonuses">Bonuses</string>
 </resources>
