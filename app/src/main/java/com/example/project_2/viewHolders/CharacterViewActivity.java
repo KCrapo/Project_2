@@ -51,6 +51,20 @@ public class CharacterViewActivity extends AppCompatActivity {
             });
         }
 
+        // Get the characterId from the Intent
+        int characterId = getIntent().getIntExtra(CHARACTER_VIEW_CHARACTER_ID, -1);
+        if (characterId != -1) {
+            repository.getCharacterByCharacterId(characterId).observe(this, character -> {
+                if (character != null) {
+                    displayCharacterDetails(character);  // Display character's details
+                } else {
+                    toastMaker("Character not found.");
+                }
+            });
+        } else {
+            toastMaker("Invalid characterId.");
+        }
+
         // Button hookup
         binding.CharacterViewInventoryButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -67,17 +81,14 @@ public class CharacterViewActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
+    // Intent Factory
 
     static Intent characterViewIntentFactory(Context context, int characterId) {
         Intent intent = new Intent(context, CharacterViewActivity.class);
         intent.putExtra(CHARACTER_VIEW_CHARACTER_ID, characterId);
         return intent;
     }
+
+    // Character display
 
 }
