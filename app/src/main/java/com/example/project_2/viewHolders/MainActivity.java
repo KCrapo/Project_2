@@ -233,6 +233,13 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        /**
+         * keep getting nullpointer error wen using
+         *  repository.getAllCharactersByUserId(user.getId()).observe(this, characters ->
+         *  however, when using this way the app no longer crashes but still does not populate
+         *  dropdown menu
+         */
+
         repository.getAllCharactersByUserId(userId).observe(this, characters -> {
             List<String> characterList = new ArrayList<>();
 

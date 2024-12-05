@@ -43,6 +43,7 @@ public class CharacterViewActivity extends AppCompatActivity {
         // Repository
         repository = CharacterTrackerRepository.getRepository(getApplication());
 
+        // Tracking userId for home button
         int userId = getIntent().getIntExtra("USER_ID", -1);
         if (userId != -1) {
             repository.getUserByUserId(userId).observe(this, user -> {
