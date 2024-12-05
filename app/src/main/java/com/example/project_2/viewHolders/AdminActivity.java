@@ -98,6 +98,10 @@ public class AdminActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.userNameDropDown);
         String selectedUsername = spinner.getSelectedItem().toString();
 
+        if(selectedUsername.split(" ").length >0){
+            selectedUsername = selectedUsername.split(" ")[0];
+        }
+
         // Empty Check
         if (selectedUsername.isEmpty() || selectedUsername == null) {
             toastMaker("No valid username selected");
@@ -220,7 +224,7 @@ public class AdminActivity extends AppCompatActivity {
                 toastMaker("User does not exist");
             } else {
                 user.setAdmin(true);
-                repository.updateUser(user);
+                repository.insertUser(user);
             }
             updateDropdownUsernames();
             userObserver.removeObservers(this);
