@@ -130,168 +130,300 @@
         app:layout_constraintTop_toBottomOf="@+id/characterRaceSpinner" />
 
     <TextView
-        android:id="@+id/strengthTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/strength"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rollStatsButton" />
-
-    <TextView
         android:id="@+id/dexterityTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/dexterity"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/strengthTextView" />
 
     <TextView
         android:id="@+id/constitutionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/constitution"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dexterityTextView" />
 
     <TextView
         android:id="@+id/intelligenceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/intelligence"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constitutionTextView" />
 
     <TextView
         android:id="@+id/wisdomTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/wisdom"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intelligenceTextView" />
 
     <TextView
         android:id="@+id/charismaTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/charisma"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wisdomTextView" />
 
     <EditText
         android:id="@+id/strengthEditText"
-        android:layout_width="276dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:inputType="number"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/strengthTextView"
         app:layout_constraintTop_toBottomOf="@+id/rollStatsButton" />
 
     <EditText
-        android:id="@+id/dexterityEditText"
-        android:layout_width="276dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/strengthBonusEditText"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/strengthEditText"
+        app:layout_constraintTop_toBottomOf="@+id/customEntryButton" />
+
+    <TextView
+        android:id="@+id/strengthTextView"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:text="@string/strength"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rollStatsButton" />
+
+    <TextView
+        android:id="@+id/statsTextView"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="@string/stats"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/strengthTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/baseValueTextView"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="@string/base_value"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/strengthEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/bonusesTextView"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="@string/bonuses"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/strengthBonusEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/dexterityEditText"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/dexterityTextView"
         app:layout_constraintTop_toBottomOf="@+id/strengthEditText" />
 
     <EditText
         android:id="@+id/constitutionEditText"
-        android:layout_width="276dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="number"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/constitutionTextView"
         app:layout_constraintTop_toBottomOf="@+id/dexterityEditText" />
 
     <EditText
         android:id="@+id/intelligenceEditText"
-        android:layout_width="276dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="number"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/intelligenceTextView"
         app:layout_constraintTop_toBottomOf="@+id/constitutionEditText" />
 
     <EditText
         android:id="@+id/wisdomEditText"
-        android:layout_width="276dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="number"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/wisdomTextView"
         app:layout_constraintTop_toBottomOf="@+id/intelligenceEditText" />
 
     <EditText
         android:id="@+id/charismaEditText"
-        android:layout_width="276dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="number"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/charismaTextView"
         app:layout_constraintTop_toBottomOf="@+id/wisdomEditText" />
+
+    <EditText
+        android:id="@+id/dexterityBonusEditText"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dexterityEditText"
+        app:layout_constraintTop_toBottomOf="@+id/strengthBonusEditText" />
+
+    <EditText
+        android:id="@+id/constitutionBonusEditText"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/constitutionEditText"
+        app:layout_constraintTop_toBottomOf="@+id/dexterityBonusEditText" />
+
+    <EditText
+        android:id="@+id/intelligenceBonusEditText"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/intelligenceEditText"
+        app:layout_constraintTop_toBottomOf="@+id/constitutionBonusEditText" />
+
+    <EditText
+        android:id="@+id/wisdomBonusEditText"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/wisdomEditText"
+        app:layout_constraintTop_toBottomOf="@+id/intelligenceBonusEditText" />
+
+    <EditText
+        android:id="@+id/charismaBonusEditText"
+        android:layout_width="136dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/charismaEditText"
+        app:layout_constraintTop_toBottomOf="@+id/wisdomBonusEditText" />
 
     <Button
         android:id="@+id/createCharacterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="20dp"
         android:text="@string/create_character"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/charismaEditText" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/charismaEditText" />
 

@@ -66,12 +66,12 @@ public class CharacterCreationActivity extends AppCompatActivity {
         binding.createCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Create Character Button Working!", Toast.LENGTH_SHORT).show();
-                checkForEmptyFields();
-                collectCharacterData();
-                addCharacterToDatabase();
-                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getId());
-                startActivity(intent);
+                if (checkForEmptyFields()) {
+                    collectCharacterData();
+                    addCharacterToDatabase();
+                    Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getId());
+                    startActivity(intent);
+                }
             }
         });
 
@@ -79,7 +79,6 @@ public class CharacterCreationActivity extends AppCompatActivity {
         binding.customEntryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Custom Entry Button Working!", Toast.LENGTH_SHORT).show();
                 setStatVisibility(CUSTOM_ENTRY);
                 currentStatEntryMethod = CUSTOM_ENTRY;
             }
@@ -90,6 +89,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), NOT_IMPLEMENTED, Toast.LENGTH_SHORT).show();
+                setStatVisibility(STANDARD_ARRAY);
                 currentStatEntryMethod = STANDARD_ARRAY;
             }
         });
@@ -99,10 +99,18 @@ public class CharacterCreationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), NOT_IMPLEMENTED, Toast.LENGTH_SHORT).show();
+                setStatVisibility(ROLL_STATS);
                 currentStatEntryMethod = ROLL_STATS;
             }
         });
 
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getId());
+                startActivity(intent);
+            }
+        });
     }
 
     //this probably isn't necessary as a separate function, but it's here for now
@@ -110,58 +118,97 @@ public class CharacterCreationActivity extends AppCompatActivity {
         repository.insertCharacter(character);
     }
 
-    private void checkForEmptyFields() {
+    private boolean checkForEmptyFields() {
+        //doesnt check for empty bonuses because they are not required
         if (binding.characterNameEditText.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter a character name", Toast.LENGTH_SHORT).show();
+            return false;
         }
-        if(binding.characterClassSpinner.getSelectedItem().toString().isEmpty()){
+        if(binding.characterClassSpinner.getSelectedItem().toString().equals("Select a Class")) {
             Toast.makeText(getApplicationContext(), "Please select a character class", Toast.LENGTH_SHORT).show();
+            return false;
         }
-        if(binding.characterRaceSpinner.getSelectedItem().toString().isEmpty()) {
+        if(binding.characterRaceSpinner.getSelectedItem().toString().equals("Select a Race")) {
             Toast.makeText(getApplicationContext(), "Please select a character race", Toast.LENGTH_SHORT).show();
+            return false;
         }
         if(currentStatEntryMethod == NONE){
             Toast.makeText(getApplicationContext(), "Please select a stat entry method and enter stats", Toast.LENGTH_SHORT).show();
+            return false;
         }
         if(currentStatEntryMethod == CUSTOM_ENTRY){
             if(binding.strengthEditText.getText().toString().isEmpty() || binding.dexterityEditText.getText().toString().isEmpty() || binding.constitutionEditText.getText().toString().isEmpty() || binding.intelligenceEditText.getText().toString().isEmpty() || binding.wisdomEditText.getText().toString().isEmpty() || binding.charismaEditText.getText().toString().isEmpty()){
-                Toast.makeText(getApplicationContext(), "Please enter all stats", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please enter a strength stat", Toast.LENGTH_SHORT).show();
+                return false;
             }
             if(binding.dexterityEditText.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(), "Please enter a dexterity stat", Toast.LENGTH_SHORT).show();
+                return false;
             }
             if(binding.constitutionEditText.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(), "Please enter a constitution stat", Toast.LENGTH_SHORT).show();
+                return false;
             }
             if(binding.intelligenceEditText.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(), "Please enter an intelligence stat", Toast.LENGTH_SHORT).show();
+                return false;
             }
             if(binding.wisdomEditText.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(), "Please enter a wisdom stat", Toast.LENGTH_SHORT).show();
+                return false;
             }
             if(binding.charismaEditText.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(), "Please enter a charisma stat", Toast.LENGTH_SHORT).show();
+                return false;
             }
         }
         if(currentStatEntryMethod == STANDARD_ARRAY){
             Toast.makeText(getApplicationContext(), NOT_IMPLEMENTED, Toast.LENGTH_SHORT).show();
+            return false;
         }
         if(currentStatEntryMethod == ROLL_STATS){
             Toast.makeText(getApplicationContext(), NOT_IMPLEMENTED, Toast.LENGTH_SHORT).show();
+            return false;
         }
+        return true;
     }
 
     private void collectCharacterData() {
         String characterName = binding.characterNameEditText.getText().toString();
         String characterClass = binding.characterClassSpinner.getSelectedItem().toString();
         String characterRace = binding.characterRaceSpinner.getSelectedItem().toString();
-        int characterLevel = DEFAULT_LEVEL;
         int characterStrength = 0;
         int characterDexterity = 0;
         int characterConstitution = 0;
         int characterIntelligence = 0;
         int characterWisdom = 0;
         int characterCharisma = 0;
+        int strengthBonus = 0;
+        int dexterityBonus = 0;
+        int constitutionBonus = 0;
+        int intelligenceBonus = 0;
+        int wisdomBonus = 0;
+        int charismaBonus = 0;
+
+        //might need to be edited further in later versions
+        if(!binding.strengthBonusEditText.getText().toString().isEmpty()){
+            strengthBonus = Integer.parseInt(binding.strengthBonusEditText.getText().toString());
+        }
+        if(!binding.dexterityBonusEditText.getText().toString().isEmpty()){
+            dexterityBonus = Integer.parseInt(binding.dexterityBonusEditText.getText().toString());
+        }
+        if(!binding.constitutionBonusEditText.getText().toString().isEmpty()){
+            constitutionBonus = Integer.parseInt(binding.constitutionBonusEditText.getText().toString());
+        }
+        if(!binding.intelligenceBonusEditText.getText().toString().isEmpty()){
+            intelligenceBonus = Integer.parseInt(binding.intelligenceBonusEditText.getText().toString());
+        }
+        if(!binding.wisdomBonusEditText.getText().toString().isEmpty()){
+            wisdomBonus = Integer.parseInt(binding.wisdomBonusEditText.getText().toString());
+        }
+        if(!binding.charismaBonusEditText.getText().toString().isEmpty()){
+            charismaBonus = Integer.parseInt(binding.charismaBonusEditText.getText().toString());
+        }
 
         if(currentStatEntryMethod == CUSTOM_ENTRY){
             characterStrength = Integer.parseInt(binding.strengthEditText.getText().toString());
@@ -180,9 +227,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
             return;
         }
 
-        character = new DNDCharacter(characterName, characterRace, characterClass, characterLevel, characterStrength, characterDexterity, characterConstitution, characterIntelligence, characterWisdom, characterCharisma, user.getId());
-
-
+        character = new DNDCharacter(characterName, characterRace, characterClass, DEFAULT_LEVEL, characterStrength, characterDexterity, characterConstitution, characterIntelligence, characterWisdom, characterCharisma, user.getId());
     }
 
     static Intent characterCreationIntentFactory(Context context, int userId) {
@@ -194,24 +239,28 @@ public class CharacterCreationActivity extends AppCompatActivity {
     private void setStatVisibility(int statEntryMethodId){
         switch (statEntryMethodId) {
             case NONE:
+                statTitleVisibility(View.INVISIBLE);
                 statTextViewVisibility(View.INVISIBLE);
                 statEditTextVisibility(View.INVISIBLE);
-
+                statBonusEditTextVisibility(View.INVISIBLE);
                 break;
             case CUSTOM_ENTRY:
+                statTitleVisibility(View.VISIBLE);
                 statTextViewVisibility(View.VISIBLE);
                 statEditTextVisibility(View.VISIBLE);
-
+                statBonusEditTextVisibility(View.VISIBLE);
                 break;
             case STANDARD_ARRAY:
+                statTitleVisibility(View.VISIBLE);
                 statTextViewVisibility(View.VISIBLE);
                 statEditTextVisibility(View.INVISIBLE);
-
+                statBonusEditTextVisibility(View.VISIBLE);
                 break;
             case ROLL_STATS:
+                statTitleVisibility(View.VISIBLE);
                 statTextViewVisibility(View.VISIBLE);
                 statEditTextVisibility(View.INVISIBLE);
-
+                statBonusEditTextVisibility(View.VISIBLE);
                 break;
         }
     }
@@ -232,6 +281,21 @@ public class CharacterCreationActivity extends AppCompatActivity {
         binding.intelligenceEditText.setVisibility(visible);
         binding.wisdomEditText.setVisibility(visible);
         binding.charismaEditText.setVisibility(visible);
+    }
+
+    private void statBonusEditTextVisibility(int visible){
+        binding.strengthBonusEditText.setVisibility(visible);
+        binding.dexterityBonusEditText.setVisibility(visible);
+        binding.constitutionBonusEditText.setVisibility(visible);
+        binding.intelligenceBonusEditText.setVisibility(visible);
+        binding.wisdomBonusEditText.setVisibility(visible);
+        binding.charismaBonusEditText.setVisibility(visible);
+    }
+
+    private void statTitleVisibility(int visible){
+        binding.statsTextView.setVisibility(visible);
+        binding.baseValueTextView.setVisibility(visible);
+        binding.bonusesTextView.setVisibility(visible);
     }
 
 }
