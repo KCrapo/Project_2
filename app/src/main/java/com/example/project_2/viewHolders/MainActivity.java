@@ -214,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
 
     /// Shared Preferences /////
 
+
     private void updateSharedPreference() {
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
@@ -223,46 +224,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /// Dropdown Character Selection Menu ///
+    /// Dropdown Character Selection Menu
+
+    /**
+     * Fixed the issues with updateCharacterDropDown. Honestly there was too much going on with having two observers going on at the same time
+     * I then realized that we already have the loggedInUserId updating from shared preferences. So we can just use that instead.
+     */
     private void updateCharacterDropDown() {
+        // Check if the logged-in userId is valid
+        if (loggedInUserId != -1) {
+            // Fetch the user data by loggedInUserId
+            repository.getUserByUserId(loggedInUserId).observe(this, user -> {
+                if (user != null) {
+                    this.user = user; // Store the user object
 
-        int userId = getIntent().getIntExtra("USER_ID", -1);
-        if (userId != -1) {
-            repository.getUserByUserId(userId).observe(this, user -> {
-                this.user = user;
-            });
-        }
+                    // Now that we have the user, fetch the characters for this user
+                    repository.getAllCharactersByUserId(user.getId()).observe(this, characters -> {
+                        List<String> characterList = new ArrayList<>();
 
-        /**
-         * keep getting nullpointer error wen using
-         *  repository.getAllCharactersByUserId(user.getId()).observe(this, characters ->
-         *  however, when using this way the app no longer crashes but still does not populate
-         *  dropdown menu
-         */
+                        // Add placeholder values for the dropdown
+                        characterList.add("User Characters");
 
-        repository.getAllCharactersByUserId(userId).observe(this, characters -> {
-            List<String> characterList = new ArrayList<>();
+                        // If characters are found, add them to the list
+                        if (characters != null && !characters.isEmpty()) {
+                            for (DNDCharacter character : characters) {
+                                characterList.add(character.getName());  
+                            }
+                        }
 
-            characterList.add("character1");
-            characterList.add("character2");
-            characterList.add("character3");
-            if (characters != null && !characters.isEmpty()) {
-                for (DNDCharacter character : characters) {
-//                    StringBuilder quickCharacter = new StringBuilder();
-//                    quickCharacter.append(character.getName() + " - " + character.getRace() + " " + character.getCharacterClass());
-                    characterList.add(character.getName());
+                        // Create and set up the dropdown (Spinner) for characters
+                        ArrayAdapter<String> characterAdapter = new ArrayAdapter<>(MainActivity.this,
+                                android.R.layout.simple_spinner_item, characterList);
+                        characterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                        // Set the adapter to the Spinner
+                        binding.CharacterSelectionSpinner.setAdapter(characterAdapter);
+                    });
+                } else {
+                    // If the user is not found, show a message (invalid username)
+                    toastMaker("User not found.");
                 }
-
-                // creating dropdown for Characters
-                ArrayAdapter<String> characterAdapter = new ArrayAdapter<>(MainActivity.this,
-                        android.R.layout.simple_spinner_item, characterList);
-
-                characterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-                binding.CharacterSelectionSpinner.setAdapter(characterAdapter);
-            }
-
-        });
+            });
+        } else {
+            // Invalid ID
+            toastMaker("Invalid userId.");
+        }
     }
+
 
 }
