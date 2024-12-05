@@ -13,111 +13,177 @@
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
         android:text="@string/name_level_race_class"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/CharacterViewStrengthTextView"
-        android:layout_width="68dp"
-        android:layout_height="80dp"
-        android:text="@string/str"
-        android:gravity="center_horizontal"
+        android:layout_width="70dp"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        android:textSize="25dp"
-        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_horizontal"
+        android:text="@string/str"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@id/CharacterViewDexterityTextView"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView" />
+
+    <TextView
+        android:id="@+id/CharacterViewStrengthTextViewOutput"
+        android:layout_width="70dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/_0"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewDexterityTextViewOutput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewStrengthTextView" />
 
     <TextView
         android:id="@+id/CharacterViewDexterityTextView"
         android:layout_width="68dp"
-        android:layout_height="80dp"
-        android:text="@string/dex"
-        android:gravity="center_horizontal"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/CharacterViewStrengthTextView"
-        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        android:gravity="center_horizontal"
+        android:text="@string/dex"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@id/CharacterViewConstitutionTextView"
-        />
+        app:layout_constraintStart_toEndOf="@id/CharacterViewStrengthTextView"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView" />
+
+    <TextView
+        android:id="@+id/CharacterViewDexterityTextViewOutput"
+        android:layout_width="68dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/_0"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewConstitutionTextViewOutput"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewStrengthTextViewOutput"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewDexterityTextView" />
+
 
     <TextView
         android:id="@+id/CharacterViewConstitutionTextView"
         android:layout_width="68dp"
-        android:layout_height="80dp"
-        android:text="@string/con"
-        android:gravity="center_horizontal"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        android:textSize="25dp"
-        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
-        app:layout_constraintStart_toEndOf="@id/CharacterViewDexterityTextView"
+        android:gravity="center_horizontal"
+        android:text="@string/con"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@id/CharacterViewIntelligenceTextView"
-        />
+        app:layout_constraintStart_toEndOf="@id/CharacterViewDexterityTextView"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView" />
+
+    <TextView
+        android:id="@+id/CharacterViewConstitutionTextViewOutput"
+        android:layout_width="68dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/_0"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewIntelligenceTextViewOutput"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewDexterityTextViewOutput"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewConstitutionTextView" />
+
 
     <TextView
         android:id="@+id/CharacterViewIntelligenceTextView"
         android:layout_width="68dp"
-        android:layout_height="80dp"
-        android:text="@string/intel"
-        android:gravity="center_horizontal"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        android:textSize="25dp"
-        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
-        app:layout_constraintStart_toEndOf="@id/CharacterViewConstitutionTextView"
+        android:gravity="center_horizontal"
+        android:text="@string/intel"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@id/CharacterViewWisdomTextView"
-        />
+        app:layout_constraintStart_toEndOf="@id/CharacterViewConstitutionTextView"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView" />
+
+    <TextView
+        android:id="@+id/CharacterViewIntelligenceTextViewOutput"
+        android:layout_width="68dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/_0"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/CharacterViewWisdomTextViewOutput"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewConstitutionTextViewOutput"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewIntelligenceTextView" />
 
     <TextView
         android:id="@+id/CharacterViewWisdomTextView"
         android:layout_width="68dp"
-        android:layout_height="80dp"
-        android:text="@string/wis"
-        android:gravity="center_horizontal"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        android:textSize="25dp"
-        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
+        android:gravity="center_horizontal"
+        android:text="@string/wis"
+        android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@id/CharacterViewIntelligenceTextView"
-        />
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView" />
+
+    <TextView
+        android:id="@+id/CharacterViewWisdomTextViewOutput"
+        android:layout_width="68dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/_0"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewIntelligenceTextViewOutput"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewWisdomTextView" />
 
     <TextView
         android:id="@+id/CharacterViewCharismaTextView"
         android:layout_width="68dp"
-        android:layout_height="80dp"
-        android:text="@string/cha"
-        android:gravity="center_horizontal"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        android:textSize="25dp"
-        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView"
-        app:layout_constraintStart_toEndOf="@id/CharacterViewWisdomTextView"
+        android:gravity="center_horizontal"
+        android:text="@string/cha"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toEndOf="@id/CharacterViewWisdomTextView"
+        app:layout_constraintTop_toBottomOf="@id/characterViewNameTextView" />
+
+    <TextView
+        android:id="@+id/CharacterViewCharismaTextViewOutput"
+        android:layout_width="68dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/_0"
+        android:textSize="25sp"
+        app:layout_constraintEnd_ttoEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/CharacterViewWisdomTextViewOutput"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewCharismaTextView" />
 
     <Button
         android:id="@+id/CharacterViewInventoryButton"
         android:layout_width="164dp"
         android:layout_height="48dp"
-        android:text="@string/inventory"
-        android:textSize="18dp"
-        app:layout_constraintTop_toBottomOf="@id/CharacterViewStrengthTextView"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="12dp"
         android:layout_marginTop="25dp"
-        />
+        android:text="@string/inventory"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewStrengthTextViewOutput" />
 
     <Button
         android:id="@+id/CharacterViewHomeButton"
         android:layout_width="164dp"
         android:layout_height="48dp"
-        android:text="@string/goHome"
-        android:textSize="18dp"
-        app:layout_constraintTop_toBottomOf="@id/CharacterViewInventoryButton"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="12dp"
         android:layout_marginTop="25dp"
-        />
+        android:text="@string/goHome"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewInventoryButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
