@@ -51,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
         repository = CharacterTrackerRepository.getRepository(getApplication());
 
+
         //Login Screen
         loginUser(savedInstanceState);
+
+        updateCharacterDropDown();
 
         if (loggedInUserId == LOGGED_OUT) {
             Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
@@ -222,7 +225,15 @@ public class MainActivity extends AppCompatActivity {
 
     /// Dropdown Character Selection Menu ///
     private void updateCharacterDropDown() {
-        repository.getAllCharactersByUserId(user.getId()).observe(this, characters -> {
+
+        int userId = getIntent().getIntExtra("USER_ID", -1);
+        if (userId != -1) {
+            repository.getUserByUserId(userId).observe(this, user -> {
+                this.user = user;
+            });
+        }
+
+        repository.getAllCharactersByUserId(userId).observe(this, characters -> {
             List<String> characterList = new ArrayList<>();
 
             characterList.add("character1");

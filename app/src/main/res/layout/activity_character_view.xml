@@ -108,7 +108,7 @@
         />
 
     <Button
-        android:id="@+id/CharacterBiewHomeButton"
+        android:id="@+id/CharacterViewHomeButton"
         android:layout_width="164dp"
         android:layout_height="48dp"
         android:text="@string/goHome"

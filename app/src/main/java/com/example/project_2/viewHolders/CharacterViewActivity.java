@@ -43,10 +43,24 @@ public class CharacterViewActivity extends AppCompatActivity {
         // Repository
         repository = CharacterTrackerRepository.getRepository(getApplication());
 
+        int userId = getIntent().getIntExtra("USER_ID", -1);
+        if (userId != -1) {
+            repository.getUserByUserId(userId).observe(this, user -> {
+                this.user = user;
+            });
+        }
+
         // Button hookup
         binding.CharacterViewInventoryButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Inventory button working!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.CharacterViewHomeButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), userId);
+                startActivity(intent);
             }
         });
 
