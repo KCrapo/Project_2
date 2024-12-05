@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/placeHolderCharacterScrollEditText"
         android:layout_width="376dp"
-        android:layout_height="224dp"
+        android:layout_height="60dp"
         android:layout_margin="16dp"
         android:gravity="center"
         android:text="@string/place_holder_for_scrolling_character_menu"
@@ -19,6 +19,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <Spinner
+        android:id="@+id/CharacterSelectionSpinner"
+        android:layout_width="376dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/placeHolderCharacterScrollEditText"
+        app:layout_constraintBottom_toTopOf="@id/selectCharacterButton"
+        />
 
     <Button
         android:id="@+id/selectCharacterButton"
@@ -29,7 +40,7 @@
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/placeHolderCharacterScrollEditText" />
+        app:layout_constraintTop_toBottomOf="@id/CharacterSelectionSpinner" />
 
     <Button
         android:id="@+id/createCharacterButton"

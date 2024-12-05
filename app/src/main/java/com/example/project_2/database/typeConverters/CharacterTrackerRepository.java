@@ -9,6 +9,7 @@ import com.example.project_2.database.entities.DNDCharacter;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.viewHolders.MainActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -117,5 +118,8 @@ public class CharacterTrackerRepository {
         return (characterDAO.getCharacterByCharacterId(characterId));
     }
 
+    public LiveData<List<DNDCharacter>> getAllCharactersByUserId(int userId) {
+        return (characterDAO.getAllCharactersByUserId(userId));
+    }
 
 }
