@@ -72,4 +72,5 @@
     <string name="name_level_race_class">Name, level, race, class</string>
     <string name="base_value">Base value</string>
     <string name="bonuses">Bonuses</string>
+    <string name="_0">0</string>
 </resources>

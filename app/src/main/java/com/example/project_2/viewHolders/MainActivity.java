@@ -67,9 +67,10 @@ public class MainActivity extends AppCompatActivity {
         binding.selectCharacterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = CharacterViewActivity.characterViewIntentFactory(getApplicationContext(), loggedInUserId);
-                startActivity(intent);
-                //toastMaker("View Character Button Working!");
+//                Intent intent = CharacterViewActivity.characterViewIntentFactory(getApplicationContext(), loggedInUserId);
+//                startActivity(intent);
+                  selectCharacter();
+
             }
         });
 
@@ -248,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                         // If characters are found, add them to the list
                         if (characters != null && !characters.isEmpty()) {
                             for (DNDCharacter character : characters) {
-                                characterList.add(character.getName());  
+                                characterList.add(character.getName());
                             }
                         }
 
@@ -269,6 +270,25 @@ public class MainActivity extends AppCompatActivity {
             // Invalid ID
             toastMaker("Invalid userId.");
         }
+    }
+
+    // select a Character and "pass" the details into CharacterView Activity
+    private void selectCharacter(){
+        String selectedChar = binding.CharacterSelectionSpinner.getSelectedItem().toString();
+        if (selectedChar.isEmpty()|| selectedChar.equals("User Characters")){
+            toastMaker("Please select a Character");
+            return;
+        }
+        repository.getCharacterByName(selectedChar).observe(this, character -> {
+            if (character != null) {
+                // If the character is found, start the CharacterViewActivity with the character's details
+                Intent intent = CharacterViewActivity.characterViewIntentFactory(getApplicationContext(), character.getCharacterId());
+                startActivity(intent);
+            } else {
+                // If no character is found, show an error message
+                toastMaker("Character not found.");
+            }
+        });
     }
 
 

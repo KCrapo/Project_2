@@ -51,6 +51,20 @@ public class CharacterViewActivity extends AppCompatActivity {
             });
         }
 
+        // Get the characterId from the Intent
+        int characterId = getIntent().getIntExtra(CHARACTER_VIEW_CHARACTER_ID, -1);
+        if (characterId != -1) {
+            repository.getCharacterByCharacterId(characterId).observe(this, character -> {
+                if (character != null) {
+                    displayCharacterDetails(character);  // Display character's details
+                } else {
+                    toastMaker("Character not found.");
+                }
+            });
+        } else {
+            toastMaker("Invalid characterId.");
+        }
+
         // Button hookup
         binding.CharacterViewInventoryButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -67,17 +81,36 @@ public class CharacterViewActivity extends AppCompatActivity {
 
     }
 
+    // Character Display
+    private void displayCharacterDetails(DNDCharacter character) {
+        //This first one is for testing. Will update to use string resources
+        binding.characterViewNameTextView.setText(character.getName() +
+                " - Level " + character.getLevel() +
+                " " + character.getRace() +
+                " " + character.getCharacterClass());
 
+        binding.CharacterViewStrengthTextViewOutput.setText(String.valueOf(character.getStrength()));
+        binding.CharacterViewDexterityTextViewOutput.setText(String.valueOf(character.getDexterity()));
+        binding.CharacterViewCharismaTextViewOutput.setText(String.valueOf(character.getConstitution()));
+        binding.CharacterViewIntelligenceTextViewOutput.setText(String.valueOf(character.getIntelligence()));
+        binding.CharacterViewWisdomTextViewOutput.setText(String.valueOf(character.getWisdom()));
+        binding.CharacterViewCharismaTextViewOutput.setText(String.valueOf(character.getCharisma()));
+    }
 
-
-
-
-
+    // Intent Factory
 
     static Intent characterViewIntentFactory(Context context, int characterId) {
         Intent intent = new Intent(context, CharacterViewActivity.class);
         intent.putExtra(CHARACTER_VIEW_CHARACTER_ID, characterId);
         return intent;
     }
+
+    // Helper Functions
+
+    private void toastMaker(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    // Character display
 
 }
