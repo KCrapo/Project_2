@@ -91,7 +91,7 @@ public class CharacterViewActivity extends AppCompatActivity {
 
         binding.CharacterViewStrengthTextViewOutput.setText(String.valueOf(character.getStrength()));
         binding.CharacterViewDexterityTextViewOutput.setText(String.valueOf(character.getDexterity()));
-        binding.CharacterViewCharismaTextViewOutput.setText(String.valueOf(character.getConstitution()));
+        binding.CharacterViewConstitutionTextViewOutput.setText(String.valueOf(character.getConstitution()));
         binding.CharacterViewIntelligenceTextViewOutput.setText(String.valueOf(character.getIntelligence()));
         binding.CharacterViewWisdomTextViewOutput.setText(String.valueOf(character.getWisdom()));
         binding.CharacterViewCharismaTextViewOutput.setText(String.valueOf(character.getCharisma()));
