@@ -33,6 +33,12 @@ public interface UserDAO {
     @Query("SELECT * from "+ "UserTable"+ " WHERE id == :userId ")
     LiveData<User> getUserByUserId(int userId);
 
+    @Query("SELECT * from UserTable WHERE username == :username")
+    User getUserByUserNameNotLive(String username);
+
+    @Query("SELECT * from UserTable WHERE id == :userId")
+    User getUserByUserIdNotLive(int userId);
+
     @Update
     void updateUser(User user);
 }
