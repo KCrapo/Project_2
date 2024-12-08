@@ -28,12 +28,14 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * NONE OF THIS WORKS : IT GOT WAAAAY TOOO COMPLICATED
+ * Some OF THIS WORKS : IT GOT WAAAAY TOOO COMPLICATED
  * Unit test for CharacterTrackerDatabase.
- * Using below for reference
- * https://developer.android.com/training/data-storage/room/testing-db
- * POTENTIAL SOLUTION to problems (or harbinger of despair) https://github.com/android/codelab-android-room-with-a-view/blob/master/app/src/androidTest/java/com/example/android/roomwordssample/LiveDataTestUtil.java
+ * Using below for reference :
  *
+ * https://developer.android.com/training/data-storage/room/testing-db
+ * https://medium.com/androiddevelopers/unit-testing-livedata-and-other-common-observability-problems-bb477262eb04
+ * POTENTIAL SOLUTION to problems (or harbinger of despair) https://github.com/android/codelab-android-room-with-a-view/blob/master/app/src/androidTest/java/com/example/android/roomwordssample/LiveDataTestUtil.java
+ * https://medium.com/swlh/unit-testing-livedata-with-mockito-and-truth-b096535cf57e
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
