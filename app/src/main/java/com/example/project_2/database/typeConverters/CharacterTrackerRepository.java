@@ -106,6 +106,20 @@ public class CharacterTrackerRepository {
         }).start();
     }
 
+    /**
+     * Get a user by username (non-LiveData, synchronous)
+     */
+    public User getUserByUserNameNotLive(String username) {
+        return userDAO.getUserByUserNameNotLive(username);
+    }
+
+    /**
+     * Get a user by userId (non-LiveData, synchronous)
+     */
+    public User getUserByUserIdNotLive(int userId) {
+        return userDAO.getUserByUserIdNotLive(userId);
+    }
+
 
     /**
      *Added methods to get characters by charactername and character ID
