@@ -10,16 +10,22 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.project_2.database.entities.DNDCharacter;
+import com.example.project_2.database.entities.Inventory;
+import com.example.project_2.database.entities.InventoryItem;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.viewHolders.MainActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = { User.class, DNDCharacter.class}, version = 1, exportSchema = false)
+@Database(entities = { User.class, DNDCharacter.class, Inventory.class, InventoryItem.class}, version = 1, exportSchema = false)
 public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     public static final String USER_TABLE = "userTable";
+
+    public static final String INVENTORY_TABLE = "InventoryTable";
+
+    public static final String INVENTORY_ITEM_TABLE = "InventoryItemTable";
 
     private static final String DATABASE_NAME = "CharacterTrackerDatabase";
 
@@ -95,6 +101,31 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
                 DNDCharacter character = new DNDCharacter("Tav", "Elf","Barbarian",3, 12, 14, 16, 17, 10, 8, 1);
                 dao.insert(character);
             });
+
+            databaseWriteExecutor.execute(() -> {
+                InventoryDAO dao = INSTANCE.inventoryDao();
+                dao.deleteAll();
+                dao.insert(new Inventory(1, 1));
+            });
+
+            databaseWriteExecutor.execute(() -> {
+                InventoryItemDAO dao = INSTANCE.inventoryItemDao();
+                dao.deleteAll();
+                String itemDescription = "This bag has an interior space considerably larger than its outside " +
+                        "dimensions—roughly 2 feet square and 4 feet deep on the inside. The bag can hold up to 500 " +
+                        "pounds, not exceeding a volume of 64 cubic feet. The bag weighs 5 pounds, regardless of its " +
+                        "contents. Retrieving an item from the bag requires a Utilize action.\n" + "\n" + "If the bag is " +
+                        "overloaded, pierced, or torn, it is destroyed, and its contents are scattered in the Astral Plane. " +
+                        "If the bag is turned inside out, its contents spill forth unharmed, but the bag must be put right " +
+                        "before it can be used again. The bag holds enough air for 10 minutes of breathing, divided by the " +
+                        "number of breathing creatures inside.\n" + "\n" + "Placing a Bag of Holding inside an " +
+                        "extradimensional space created by a Heward's Handy Haversack, Portable Hole, or similar item " +
+                        "instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the " +
+                        "one item was placed inside the other. Any creature within a 10-foot-radius Sphere centered on the " +
+                        "gate is sucked through it to a random location on the Astral Plane. The gate then closes. The " +
+                        "gate is one-way and can't be reopened.";
+                dao.insert(new InventoryItem("Bag of Holding", itemDescription, 5, 500, "Wonderous", 1, "Uncommon"));
+            });
         }
     };
 
@@ -102,8 +133,10 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     public abstract UserDAO userDao();
 
-
 // abstract characterDao
     public abstract CharacterDAO characterDao();
 
+    public abstract InventoryDAO inventoryDao();
+
+    public abstract InventoryItemDAO inventoryItemDao();
 }
