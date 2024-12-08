@@ -124,7 +124,7 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
                         "one item was placed inside the other. Any creature within a 10-foot-radius Sphere centered on the " +
                         "gate is sucked through it to a random location on the Astral Plane. The gate then closes. The " +
                         "gate is one-way and can't be reopened.";
-                dao.insert(new InventoryItem("Bag of Holding", itemDescription, 5, 500, "Wonderous", 1, "Uncommon"));
+                dao.insert(new InventoryItem("Bag of Holding", itemDescription, 5, 500, "Wonderous Item", 1, "Uncommon"));
             });
         }
     };
