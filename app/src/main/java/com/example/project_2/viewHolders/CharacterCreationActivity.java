@@ -177,12 +177,14 @@ public class CharacterCreationActivity extends AppCompatActivity {
         String characterName = binding.characterNameEditText.getText().toString();
         String characterClass = binding.characterClassSpinner.getSelectedItem().toString();
         String characterRace = binding.characterRaceSpinner.getSelectedItem().toString();
+
         int characterStrength = 0;
         int characterDexterity = 0;
         int characterConstitution = 0;
         int characterIntelligence = 0;
         int characterWisdom = 0;
         int characterCharisma = 0;
+
         int strengthBonus = 0;
         int dexterityBonus = 0;
         int constitutionBonus = 0;
@@ -211,12 +213,12 @@ public class CharacterCreationActivity extends AppCompatActivity {
         }
 
         if(currentStatEntryMethod == CUSTOM_ENTRY){
-            characterStrength = Integer.parseInt(binding.strengthEditText.getText().toString());
-            characterDexterity = Integer.parseInt(binding.dexterityEditText.getText().toString());
-            characterConstitution = Integer.parseInt(binding.constitutionEditText.getText().toString());
-            characterIntelligence = Integer.parseInt(binding.intelligenceEditText.getText().toString());
-            characterWisdom = Integer.parseInt(binding.wisdomEditText.getText().toString());
-            characterCharisma = Integer.parseInt(binding.charismaEditText.getText().toString());
+            characterStrength = Integer.parseInt(binding.strengthEditText.getText().toString()) + strengthBonus;
+            characterDexterity = Integer.parseInt(binding.dexterityEditText.getText().toString()) + dexterityBonus;
+            characterConstitution = Integer.parseInt(binding.constitutionEditText.getText().toString()) + constitutionBonus;
+            characterIntelligence = Integer.parseInt(binding.intelligenceEditText.getText().toString()) + intelligenceBonus;
+            characterWisdom = Integer.parseInt(binding.wisdomEditText.getText().toString()) + wisdomBonus;
+            characterCharisma = Integer.parseInt(binding.charismaEditText.getText().toString()) + charismaBonus;
         }
         if(currentStatEntryMethod == STANDARD_ARRAY){
             Toast.makeText(getApplicationContext(), NOT_IMPLEMENTED, Toast.LENGTH_SHORT).show();
