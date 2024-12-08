@@ -12,6 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.project_2.database.entities.DNDCharacter;
 import com.example.project_2.database.entities.Inventory;
 import com.example.project_2.database.entities.InventoryItem;
+import com.example.project_2.database.entities.Macro;
 import com.example.project_2.database.entities.Spell;
 import com.example.project_2.database.entities.SpellBook;
 import com.example.project_2.database.entities.User;
@@ -20,7 +21,7 @@ import com.example.project_2.viewHolders.MainActivity;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = { User.class, DNDCharacter.class, Inventory.class, InventoryItem.class, SpellBook.class, Spell.class}, version = 1, exportSchema = false)
+@Database(entities = { User.class, DNDCharacter.class, Inventory.class, InventoryItem.class, SpellBook.class, Spell.class, Macro.class}, version = 1, exportSchema = false)
 public abstract class CharacterTrackerDatabase extends RoomDatabase {
 
     public static final String USER_TABLE = "userTable";
@@ -32,6 +33,8 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
     public static final String SPELL_BOOK_TABLE = "SpellBookTable";
 
     public static final String SPELL_TABLE = "SpellTable";
+
+    public static final String MACROS_TABLE = "MacrosTable";
 
     private static final String DATABASE_NAME = "CharacterTrackerDatabase";
 
@@ -145,7 +148,11 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
                 dao.insert((new Spell("Wish")));
             });
 
-
+            databaseWriteExecutor.execute(() -> {
+                MacroDAO dao = INSTANCE.macroDao();
+                dao.deleteAll();
+                dao.insert(new Macro(1, "6s4d6dlr1")); // 6 sets of 4 d6 dice rolls, drop the lowest roll, reroll 1s
+            });
 
         }
     };
@@ -164,4 +171,6 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
     public abstract SpellBookDAO spellBookDao();
 
     public abstract SpellDAO spellDao();
+
+    public abstract MacroDAO macroDao();
 }
