@@ -5,18 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".viewHolders.SpellbookFragment">
 
+
+
     <TextView
         android:id="@+id/tvSpellBookFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="346dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="345dp"
         android:text="@string/spellBook"
         android:textSize="30sp" />
 
