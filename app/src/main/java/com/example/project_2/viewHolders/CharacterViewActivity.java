@@ -125,7 +125,7 @@ public class CharacterViewActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    // Replacing fragment layout
+    // Replacing fragment layout - woohoo!
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
