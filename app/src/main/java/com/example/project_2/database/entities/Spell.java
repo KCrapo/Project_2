@@ -1,6 +1,7 @@
 package com.example.project_2.database.entities;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.example.project_2.database.typeConverters.CharacterTrackerDatabase;
 
@@ -8,7 +9,10 @@ import java.util.Objects;
 
 @Entity(tableName = CharacterTrackerDatabase.SPELL_TABLE)
 public class Spell {
+
+    @PrimaryKey(autoGenerate = true)
     private int spellId;
+
     private String spellName;
 
     public Spell(String spellName) {

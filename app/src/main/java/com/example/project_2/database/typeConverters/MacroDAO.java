@@ -17,7 +17,7 @@ public interface MacroDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Macro...macro);
 
-    @Delete
+    @Query("DELETE from " + "MacrosTable")
     void deleteAll();
 
     @Query("DELETE from " + "MacrosTable" + " WHERE macroId == :macroId")
