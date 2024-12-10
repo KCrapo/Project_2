@@ -86,7 +86,7 @@ public class AdminActivity extends AppCompatActivity {
 
     // Intent Factory
 
-    static Intent AdminIntentFactory(Context context) {
+    public static Intent AdminIntentFactory(Context context) {
         return new Intent(context, AdminActivity.class);
     }
 
