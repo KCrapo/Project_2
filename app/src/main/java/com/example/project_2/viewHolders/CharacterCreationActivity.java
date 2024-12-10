@@ -31,7 +31,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
     private static final int ROLL_STATS = 3;
     private static final int DEFAULT_LEVEL = 1;
     private static final String NOT_IMPLEMENTED = "NOT IMPLEMENTED IN THIS VERSION";
-    private static final String CHARACTER_CREATOR_USER_ID = "com.example.project_2.viewHolders.CHARACTER_CREATOR_USER_ID";
+    public static final String CHARACTER_CREATOR_USER_ID = "com.example.project_2.viewHolders.CHARACTER_CREATOR_USER_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,7 +232,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
         character = new DNDCharacter(characterName, characterRace, characterClass, DEFAULT_LEVEL, characterStrength, characterDexterity, characterConstitution, characterIntelligence, characterWisdom, characterCharisma, user.getId());
     }
 
-    static Intent characterCreationIntentFactory(Context context, int userId) {
+    public static Intent characterCreationIntentFactory(Context context, int userId) {
         Intent intent = new Intent(context, CharacterCreationActivity.class);
         intent.putExtra(CHARACTER_CREATOR_USER_ID, userId);
         return intent;
