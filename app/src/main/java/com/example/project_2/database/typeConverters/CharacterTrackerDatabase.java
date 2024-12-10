@@ -133,7 +133,29 @@ public abstract class CharacterTrackerDatabase extends RoomDatabase {
                         "one item was placed inside the other. Any creature within a 10-foot-radius Sphere centered on the " +
                         "gate is sucked through it to a random location on the Astral Plane. The gate then closes. The " +
                         "gate is one-way and can't be reopened.";
-                dao.insert(new InventoryItem("Bag of Holding", itemDescription, 5, 500, "Wonderous Item", 1, "Uncommon"));
+                dao.insert(new InventoryItem("Bag of Holding", itemDescription, 5, 500, "Wonderous Item", 1,
+                        "Uncommon"));
+                itemDescription = "This stoppered flask sloshes when shaken, as if it contains water. The decanter weighs 2 pounds.\n" +
+                        "\n" + "You can take a Magic action to remove the stopper and issue one of three command words, whereupon an amount " +
+                        "of fresh water or salt water (your choice) pours out of the flask. The water stops pouring out at the start of your " +
+                        "next turn. Choose from the following command words:\n" + "\n" + "Splash. The decanter produces 1 gallon of water.\n" +
+                        "\n" + "Fountain. The decanter produces 5 gallons of water.\n" + "\n" + "Geyser. The decanter produces 30 gallons of " +
+                        "water that gushes forth in a Line 30 feet long and 1 foot wide. If you're holding the decanter, you can aim the geyser " +
+                        "in one direction (no action required). One creature of your choice in the Line must succeed on a DC 13 Strength saving " +
+                        "throw or take 1d4 Bludgeoning damage and have the Prone condition. Instead of a creature, you can target one object in the " +
+                        "Line that isn't being worn or carried and that weighs no more than 200 pounds. The object is knocked over by the geyser.";
+                dao.insert(new InventoryItem("Decanter of Endless Water", itemDescription, 2, 100, "Wonderous Item", 1, "Uncommon"));
+
+                itemDescription = "This small packet contains 1d6 + 4 pinches of dust. As a Utilize action, you can sprinkle a pinch of the dust over " +
+                        "water, turning up to a 15-foot Cube of water into one marble-sized pellet, which floats or rests near where the dust was sprinkled. " +
+                        "The pellet's weight is negligible. A creature can take a Utilize action to smash the pellet against a hard surface, causing the pellet " +
+                        "to shatter and release the water the dust absorbed. Doing so destroys the pellet and ends its magic.\n" + "\n" + "As a Utilize action, " +
+                        "you can sprinkle a pinch of the dust on an Elemental within 5 feet of yourself that is composed mostly of water (such as a Water Elemental " +
+                        "or a Water Weird). Such a creature exposed to a pinch of the dust makes a DC 13 Constitution saving throw, taking 10d6 Necrotic damage on a " +
+                        "failed save or half as much damage on a successful one.";
+                dao.insert(new InventoryItem("Dust of Dryness", itemDescription, 0, 0, "Wonderous Item", 1, "Uncommon"));
+                //just a few of my favorite items
+
             });
 
             databaseWriteExecutor.execute(() -> {

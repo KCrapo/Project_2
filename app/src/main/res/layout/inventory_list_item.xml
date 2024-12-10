@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/inventoryItemName"
-        android:layout_width="250dp"
+        android:layout_width="310dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Item Name"
@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/inventoryItemWeight"
-        android:layout_width="80dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Item Weight"
@@ -30,7 +30,7 @@
 
     <TextView
         android:id="@+id/inventoryItemQuantity"
-        android:layout_width="80dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Item Quantity"
