@@ -30,7 +30,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final int LOGGED_OUT = -1;
-    private static final String MAIN_ACTIVITY_USER_ID = "com.example.project_2.viewHolders.MAIN_ACTIVITY_USER_ID";
+    public static final String MAIN_ACTIVITY_USER_ID = "com.example.project_2.viewHolders.MAIN_ACTIVITY_USER_ID";
     public static final String TAG = "DAC_CHARACTER_CREATOR";
     private static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.project_2.viewHolders.SAVED_INSTANCE_STATE_USERID_KEY";
     int loggedInUserId = -1;
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Helper Functions and Intents
 
-    static Intent mainActivityIntentFactory(Context context, int userId) {
+    public static Intent mainActivityIntentFactory(Context context, int userId) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
         return intent;
