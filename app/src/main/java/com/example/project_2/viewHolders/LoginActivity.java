@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Intent Factory
 
-    static Intent loginIntentFactory(Context context) {
+    public static Intent loginIntentFactory(Context context) {
         return new Intent(context, LoginActivity.class);
     }
 
