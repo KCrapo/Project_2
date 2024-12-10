@@ -164,7 +164,7 @@
 
     <Button
         android:id="@+id/CharacterViewInventoryButton"
-        android:layout_width="164dp"
+        android:layout_width="131dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="25dp"
@@ -174,15 +174,40 @@
         app:layout_constraintTop_toBottomOf="@id/CharacterViewStrengthTextViewOutput" />
 
     <Button
+        android:id="@+id/CharacterViewSpellBookButton"
+        android:layout_width="131dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/spellbook"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/CharacterViewHomeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewInventoryButton" />
+
+    <Button
         android:id="@+id/CharacterViewHomeButton"
-        android:layout_width="164dp"
+        android:layout_width="131dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="25dp"
         android:text="@string/goHome"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/CharacterViewInventoryButton" />
+        app:layout_constraintTop_toBottomOf="@id/CharacterViewSpellBookButton" />
+
+    <FrameLayout
+        android:id="@+id/CharacterViewFragment"
+        android:layout_width="260dp"
+        android:layout_height="518dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CharacterViewInventoryButton"
+        app:layout_constraintTop_toBottomOf="@+id/CharacterViewIntelligenceTextViewOutput" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
