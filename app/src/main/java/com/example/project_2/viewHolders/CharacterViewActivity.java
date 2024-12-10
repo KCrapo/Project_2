@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.project_2.R;
 import com.example.project_2.database.entities.DNDCharacter;
@@ -68,7 +71,15 @@ public class CharacterViewActivity extends AppCompatActivity {
         // Button hookup
         binding.CharacterViewInventoryButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Inventory button working!", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "Inventory button working!", Toast.LENGTH_SHORT).show();
+                replaceFragment(new InventoryFragment());
+            }
+        });
+
+        binding.CharacterViewSpellBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(new SpellbookFragment());
             }
         });
 
@@ -79,7 +90,10 @@ public class CharacterViewActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
+
 
     // Character Display
     private void displayCharacterDetails(DNDCharacter character) {
@@ -111,6 +125,15 @@ public class CharacterViewActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    // Character display
+    // Replacing fragment layout - woohoo!
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.CharacterViewFragment,fragment);
+        fragmentTransaction.commit();
+    }
+
+
 
 }

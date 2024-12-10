@@ -73,4 +73,9 @@
     <string name="base_value">Base value</string>
     <string name="bonuses">Bonuses</string>
     <string name="_0">0</string>
+    <string name="spellbook">Spellbook</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="inventory_fragment">Inventory Fragment</string>
+    <string name="spellBook">SpellBook</string>
 </resources>

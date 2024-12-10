@@ -10,7 +10,7 @@ import com.example.project_2.database.typeConverters.CharacterTrackerDatabase;
 import java.util.Objects;
 
 /**
- * this is a POJO meant to represent the Character Tracker
+ * this is a POJO meant to represent the Character
  */
 
 @Entity(tableName = CharacterTrackerDatabase.CHARACTER_TABLE)
