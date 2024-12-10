@@ -31,4 +31,7 @@ public interface SpellDAO {
 
     @Query("SELECT * from "+ "SpellTable"+ " WHERE spellId == :spellId")
     LiveData<Spell> getSpellBySpellId(int spellId);
+
+    @Query("SELECT * from "+ "SpellTable"+ " WHERE spellName == :spellName")
+    LiveData<Spell> getSpellBySpellName(String spellName);
 }
