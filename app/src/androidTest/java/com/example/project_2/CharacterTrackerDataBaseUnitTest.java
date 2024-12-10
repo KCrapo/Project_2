@@ -28,14 +28,20 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Some OF THIS WORKS : IT GOT WAAAAY TOOO COMPLICATED
- * Unit test for CharacterTrackerDatabase.
+ * SOMEOF THIS WORKS : Live Data is really difficult to unit test,
+ *
+ * Below are the resources I used to try and figure out how to accomplish these tests.
+ *
+ * Overall I think the best solution would be looking into Mockit and figuring out how
+ * to "Mock" Livedata for testing purposes
+ *
  * Using below for reference :
  *
  * https://developer.android.com/training/data-storage/room/testing-db
  * https://medium.com/androiddevelopers/unit-testing-livedata-and-other-common-observability-problems-bb477262eb04
  * POTENTIAL SOLUTION to problems (or harbinger of despair) https://github.com/android/codelab-android-room-with-a-view/blob/master/app/src/androidTest/java/com/example/android/roomwordssample/LiveDataTestUtil.java
  * https://medium.com/swlh/unit-testing-livedata-with-mockito-and-truth-b096535cf57e
+ *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
