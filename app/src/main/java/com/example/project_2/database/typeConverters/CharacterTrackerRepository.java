@@ -16,6 +16,7 @@ import com.example.project_2.viewHolders.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -198,19 +199,19 @@ public class CharacterTrackerRepository {
         return (inventoryItemDAO.getAllItems());
     }
 
-    public LiveData<InventoryItem> getInventoryByItemId(int itemId) {
+    public LiveData<InventoryItem> getInventoryItemByItemId(int itemId) {
         return (inventoryItemDAO.getInventoryItemById(itemId));
     }
 
-    public LiveData<InventoryItem> getInventoryByItemName(String itemName) {
+    public LiveData<InventoryItem> getInventoryItemByItemName(String itemName) {
         return (inventoryItemDAO.getInventoryItemByItemName(itemName));
     }
 
-    public LiveData<InventoryItem> getInventoryByItemCategory(String itemCategory) {
+    public LiveData<InventoryItem> getInventoryItemByItemCategory(String itemCategory) {
         return (inventoryItemDAO.getInventoryItemByItemCategory(itemCategory));
     }
 
-    public LiveData<InventoryItem> getInventoryByItemRarity(String itemRarity) {
+    public LiveData<InventoryItem> getInventoryItemByItemRarity(String itemRarity) {
         return (inventoryItemDAO.getInventoryItemByItemRarity(itemRarity));
     }
 
@@ -234,6 +235,15 @@ public class CharacterTrackerRepository {
 
     public void deleteAllInventoryItems() {
         CharacterTrackerDatabase.databaseWriteExecutor.execute(inventoryItemDAO::deleteAll);
+    }
+
+    public List<InventoryItem> getInventoryItemsByCharacterId(int characterId) {
+        LiveData<List<Inventory>> inventory = inventoryDAO.getInventoryByCharacterId(characterId);
+        List<InventoryItem> inventoryItems = new ArrayList<>();
+        for (Inventory inv : Objects.requireNonNull(inventory.getValue())) {
+            inventoryItems.add(inventoryItemDAO.getInventoryItemById(inv.getItemId()).getValue());
+        }
+        return (inventoryItems);
     }
 
 

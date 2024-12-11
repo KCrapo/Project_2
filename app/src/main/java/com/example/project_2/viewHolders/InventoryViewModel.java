@@ -15,22 +15,23 @@ import java.util.List;
 
 public class InventoryViewModel extends AndroidViewModel {
     private final CharacterTrackerRepository repository;
-    private final LiveData<List<Inventory>> inventory;
-    private final LiveData<List<InventoryItem>> inventoryList;
+//    private final LiveData<List<Inventory>> inventory;
+//    private final LiveData<List<InventoryItem>> inventoryList;
 
-    public InventoryViewModel(@NonNull Application application , int characterId) {
+    public InventoryViewModel(@NonNull Application application) {
         super(application);
         repository = CharacterTrackerRepository.getRepository(application);
-        inventory = repository.getInventoryByCharacterId(characterId);
+//        inventory = repository.getInventoryByCharacterId(characterId);
+
 
     }
 
-    public LiveData<List<Inventory>> getInventory() {
-        return inventory;
+    public LiveData<List<Inventory>> getInventory(int characterId) {
+        return repository.getInventoryByCharacterId(characterId);
     }
 
-    public LiveData<List<InventoryItem>> getInventoryList() {
-        return inventoryList;
+    public List<InventoryItem> getInventoryList(int characterId) {
+        return repository.getInventoryItemsByCharacterId(characterId);
     }
 
 

@@ -59,6 +59,7 @@ public class CharacterViewActivity extends AppCompatActivity {
         if (characterId != -1) {
             repository.getCharacterByCharacterId(characterId).observe(this, character -> {
                 if (character != null) {
+                    this.character = character;
                     displayCharacterDetails(character);  // Display character's details
                 } else {
                     toastMaker("Character not found.");
@@ -92,6 +93,10 @@ public class CharacterViewActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public int getCharacterId(){
+        return character.getCharacterId();
     }
 
 

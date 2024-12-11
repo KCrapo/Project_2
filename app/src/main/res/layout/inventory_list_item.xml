@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="260dp"
     android:layout_height="60dp">
 
     <TextView
         android:id="@+id/inventoryItemName"
-        android:layout_width="310dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Item Name"
@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/inventoryItemWeight"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Item Weight"
@@ -30,7 +30,7 @@
 
     <TextView
         android:id="@+id/inventoryItemQuantity"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Item Quantity"
