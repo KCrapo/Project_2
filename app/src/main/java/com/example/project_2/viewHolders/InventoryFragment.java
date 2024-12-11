@@ -65,10 +65,6 @@ public class InventoryFragment extends Fragment {
         }
 
 
-
-
-
-
         inventoryTextView.setText(inventoryString.toString());
 
 
