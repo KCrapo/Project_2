@@ -6,11 +6,17 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.example.project_2.database.entities.DNDCharacter;
+import com.example.project_2.database.entities.Inventory;
+import com.example.project_2.database.entities.InventoryItem;
+import com.example.project_2.database.entities.Macro;
+import com.example.project_2.database.entities.Spell;
+import com.example.project_2.database.entities.SpellBook;
 import com.example.project_2.database.entities.User;
 import com.example.project_2.viewHolders.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -21,6 +27,16 @@ public class CharacterTrackerRepository {
     private final CharacterDAO characterDAO;
 
     private static CharacterTrackerRepository repository;
+
+    private InventoryDAO inventoryDAO;
+
+    private InventoryItemDAO inventoryItemDAO;
+
+    private SpellBookDAO spellBookDAO;
+
+    private SpellDAO spellDAO;
+
+    private MacroDAO macroDAO;
 
 
     /**
@@ -125,4 +141,204 @@ public class CharacterTrackerRepository {
         return (characterDAO.getAllCharactersByUserId(userId));
     }
 
+    //Methods to get Inventories
+    public LiveData<List<Inventory>> getInventoryByCharacterId(int characterId) {
+        return (inventoryDAO.getInventoryByCharacterId(characterId));
+    }
+
+    public LiveData<List<Inventory>> getInventoriesByItemId(int itemId) {
+        return (inventoryDAO.getInventoriesByItemId(itemId));
+    }
+
+    public LiveData<List<Inventory>> getAllInventories() {
+        return (inventoryDAO.getAllInventories());
+    }
+
+    public void insertInventory(Inventory inventory) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            inventoryDAO.insert(inventory);
+        });
+    }
+
+    public void deleteInventory(Inventory inventory) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            inventoryDAO.delete(inventory);
+        });
+    }
+
+    public void deleteInventoryByCharacterIdAndItemId(int characterId, int itemId) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            inventoryDAO.deleteInventoryByCharacterIdAndItemId(characterId, itemId);
+        });
+    }
+
+    public void deleteInventoryByCharacterId(int characterId) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            inventoryDAO.deleteInventoryByCharacterId(characterId);
+        });
+    }
+
+    public void deleteAllInventories() {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(inventoryDAO::deleteAll);
+    }
+
+
+
+
+    //Methods to get InventoryItems
+    public LiveData<List<InventoryItem>> getAllItems() {
+        return (inventoryItemDAO.getAllItems());
+    }
+
+    public LiveData<InventoryItem> getInventoryItemByItemId(int itemId) {
+        return (inventoryItemDAO.getInventoryItemsById(itemId));
+    }
+
+    public LiveData<InventoryItem> getInventoryItemByItemName(String itemName) {
+        return (inventoryItemDAO.getInventoryItemByItemName(itemName));
+    }
+
+    public LiveData<List<InventoryItem>> getInventoryItemByItemCategory(String itemCategory) {
+        return (inventoryItemDAO.getInventoryItemsByItemCategory(itemCategory));
+    }
+
+    public LiveData<List<InventoryItem>> getInventoryItemByItemRarity(String itemRarity) {
+        return (inventoryItemDAO.getInventoryItemsByItemRarity(itemRarity));
+    }
+
+    public void insertInventoryItem(InventoryItem inventoryItem) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            inventoryItemDAO.insert(inventoryItem);
+        });
+    }
+
+    public void deleteInventoryItem(InventoryItem inventoryItem) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            inventoryItemDAO.delete(inventoryItem);
+        });
+    }
+
+    public void deleteInventoryItemById(int itemId) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            inventoryItemDAO.deleteItemById(itemId);
+        });
+    }
+
+    public void deleteAllInventoryItems() {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(inventoryItemDAO::deleteAll);
+    }
+
+    public List<InventoryItem> getInventoryItemsByCharacterId(int characterId) {
+        LiveData<List<Inventory>> inventory = inventoryDAO.getInventoryByCharacterId(characterId);
+        List<InventoryItem> inventoryItems = new ArrayList<>();
+        for (Inventory inv : Objects.requireNonNull(inventory.getValue())) {
+            inventoryItems.add(inventoryItemDAO.getInventoryItemsById(inv.getItemId()).getValue());
+        }
+        return (inventoryItems);
+    }
+
+
+
+    //Methods to get SpellBooks
+    public LiveData<List<SpellBook>> getAllSpellBooks() {
+        return (spellBookDAO.getAllSpellBooks());
+    }
+
+    public LiveData<SpellBook> getSpellBookByCharacterId(int characterId) {
+        return (spellBookDAO.getSpellBookByCharacterId(characterId));
+    }
+
+    public void insertSpellBook(SpellBook spellBook) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            spellBookDAO.insert(spellBook);
+        });
+    }
+
+    public void deleteSpellBook(SpellBook spellBook) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            spellBookDAO.delete(spellBook);
+        });
+    }
+
+    public void deleteAllSpellBooks() {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(spellBookDAO::deleteAll);
+    }
+
+
+    //Methods to get Spells
+    public LiveData<List<Spell>> getAllSpells() {
+        return (spellDAO.getAllSpells());
+    }
+
+    public LiveData<Spell> getSpellBySpellId(int spellId) {
+        return (spellDAO.getSpellBySpellId(spellId));
+    }
+
+    public LiveData<Spell> getSpellBySpellName(String spellName) {
+        return (spellDAO.getSpellBySpellName(spellName));
+    }
+
+    public void insertSpell(Spell spell) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            spellDAO.insert(spell);
+        });
+    }
+
+    public void deleteSpell(Spell spell) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            spellDAO.delete(spell);
+        });
+    }
+
+    public void deleteSpellById(int spellId) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            spellDAO.deleteSpellById(spellId);
+        });
+    }
+
+    public void deleteAllSpells() {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(spellDAO::deleteAll);
+    }
+
+
+    //Methods to get Macros
+    public LiveData<List<Macro>> getAllMacros() {
+        return (macroDAO.getAllMacros());
+    }
+
+    public LiveData<Macro> getMacroByMacroId(int macroId) {
+        return (macroDAO.getMacroByMacroId(macroId));
+    }
+
+    public LiveData<List<Macro>> getMacroByCharacterId(int characterId) {
+        return (macroDAO.getMacrosByCharacterId(characterId));
+    }
+
+    public void insertMacro(Macro macro) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            macroDAO.insert(macro);
+        });
+    }
+
+    public void deleteMacro(Macro macro) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            macroDAO.delete(macro);
+        });
+    }
+
+    public void deleteMacroById(int macroId) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            macroDAO.deleteMacroById(macroId);
+        });
+    }
+
+    public void deleteMacroByCharacterId(int characterId) {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(() -> {
+            macroDAO.deleteMacroByCharacterId(characterId);
+        });
+    }
+
+    public void deleteAllMacros() {
+        CharacterTrackerDatabase.databaseWriteExecutor.execute(macroDAO::deleteAll);
+    }
 }

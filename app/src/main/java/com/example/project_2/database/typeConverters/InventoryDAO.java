@@ -30,8 +30,14 @@ public interface InventoryDAO {
     LiveData<List<Inventory>> getAllInventories();
 
     @Query("SELECT * from "+ "inventorytable"+ " WHERE characterId == :characterId")
-    LiveData<Inventory> getInventoryByCharacterId(int characterId);
+    LiveData<List<Inventory>> getInventoryByCharacterId(int characterId);
 
     @Query("SELECT * from "+ "inventorytable"+ " WHERE itemId == :itemId")
     LiveData<Inventory> getInventoryByItemId(int itemId);
+
+    @Query("SELECT * from "+ "inventorytable"+ " WHERE itemId == :itemId")
+    LiveData<List<Inventory>> getInventoriesByItemId(int itemId);
+
+    @Query("DELETE from " + "inventorytable" + " WHERE characterId == :characterId AND itemId == :itemId")
+    void deleteInventoryByCharacterIdAndItemId(int characterId, int itemId);
 }

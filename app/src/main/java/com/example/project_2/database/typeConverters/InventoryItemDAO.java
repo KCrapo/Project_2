@@ -7,7 +7,6 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.project_2.database.entities.Inventory;
 import com.example.project_2.database.entities.InventoryItem;
 
 import java.util.List;
@@ -31,14 +30,14 @@ public interface InventoryItemDAO {
     LiveData<List<InventoryItem>> getAllItems();
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemId == :itemId")
-    LiveData<InventoryItem> getInventoryByCharacterId(int itemId);
+    LiveData<InventoryItem> getInventoryItemsById(int itemId);
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemName == :itemName")
-    LiveData<InventoryItem> getInventoryByItemName(String itemName);
+    LiveData<InventoryItem> getInventoryItemByItemName(String itemName);
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemCategory == :itemCategory")
-    LiveData<InventoryItem> getInventoryByItemCategory(String itemCategory);
+    LiveData<List<InventoryItem>> getInventoryItemsByItemCategory(String itemCategory);
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemRarity == :itemRarity")
-    LiveData<InventoryItem> getInventoryByItemRarity(String itemRarity);
+    LiveData<List<InventoryItem>> getInventoryItemsByItemRarity(String itemRarity);
 }
