@@ -20,24 +20,21 @@ public interface InventoryDAO {
     @Delete
     void delete(Inventory inventory);
 
-    @Query("DELETE from " + "inventorytable")
+    @Query("DELETE from " + "InventoryTable")
     void deleteAll();
 
-    @Query("DELETE from " + "inventorytable" + " WHERE characterId == :characterId")
+    @Query("DELETE from " + "InventoryTable" + " WHERE characterId == :characterId")
     void deleteInventoryByCharacterId(int characterId);
 
-    @Query(" SELECT * FROM " + "inventorytable"+ " ORDER BY inventoryId")
+    @Query(" SELECT * FROM " + "InventoryTable"+ " ORDER BY inventoryId")
     LiveData<List<Inventory>> getAllInventories();
 
-    @Query("SELECT * from "+ "inventorytable"+ " WHERE characterId == :characterId")
+    @Query("SELECT * from "+ "InventoryTable"+ " WHERE characterId == :characterId ORDER BY inventoryId")
     LiveData<List<Inventory>> getInventoryByCharacterId(int characterId);
 
-    @Query("SELECT * from "+ "inventorytable"+ " WHERE itemId == :itemId")
-    LiveData<Inventory> getInventoryByItemId(int itemId);
-
-    @Query("SELECT * from "+ "inventorytable"+ " WHERE itemId == :itemId")
+    @Query("SELECT * from "+ "InventoryTable"+ " WHERE itemId == :itemId")
     LiveData<List<Inventory>> getInventoriesByItemId(int itemId);
 
-    @Query("DELETE from " + "inventorytable" + " WHERE characterId == :characterId AND itemId == :itemId")
+    @Query("DELETE from " + "InventoryTable" + " WHERE characterId == :characterId AND itemId == :itemId")
     void deleteInventoryByCharacterIdAndItemId(int characterId, int itemId);
 }

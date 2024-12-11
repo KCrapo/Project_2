@@ -32,7 +32,7 @@ public class CharacterViewActivity extends AppCompatActivity {
     private User user;
     private DNDCharacter character;
 
-    private static final String CHARACTER_VIEW_CHARACTER_ID = "com.example.project_2.viewHolders.CHARACTER_VIEW_CHARACTER_ID";
+    public static final String CHARACTER_VIEW_CHARACTER_ID = "com.example.project_2.viewHolders.CHARACTER_VIEW_CHARACTER_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +97,8 @@ public class CharacterViewActivity extends AppCompatActivity {
 
     // Character Display
     private void displayCharacterDetails(DNDCharacter character) {
-        //This first one is for testing. Will update to use string resources
+
+        // Should probably use string resources here, buuuuut this will do for now
         binding.characterViewNameTextView.setText(character.getName() +
                 " - Level " + character.getLevel() +
                 " " + character.getRace() +
@@ -113,7 +114,10 @@ public class CharacterViewActivity extends AppCompatActivity {
 
     // Intent Factory
 
-    static Intent characterViewIntentFactory(Context context, int characterId) {
+    // In retrospect we probably should have added userID as an extra... but we had it stored in
+    // shared preferences so I just used that when both are needed
+
+    public static Intent characterViewIntentFactory(Context context, int characterId) {
         Intent intent = new Intent(context, CharacterViewActivity.class);
         intent.putExtra(CHARACTER_VIEW_CHARACTER_ID, characterId);
         return intent;

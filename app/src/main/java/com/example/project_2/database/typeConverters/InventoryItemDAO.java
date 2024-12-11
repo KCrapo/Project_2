@@ -30,7 +30,7 @@ public interface InventoryItemDAO {
     LiveData<List<InventoryItem>> getAllItems();
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemId == :itemId")
-    LiveData<InventoryItem> getInventoryItemsById(int itemId);
+    LiveData<InventoryItem> getInventoryItemById(int itemId);
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemName == :itemName")
     LiveData<InventoryItem> getInventoryItemByItemName(String itemName);

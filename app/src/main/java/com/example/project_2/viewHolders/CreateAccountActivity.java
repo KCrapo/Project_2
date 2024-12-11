@@ -52,7 +52,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     //Intent Factory I dont think I need to pass any extras
-    static Intent createAccountIntentFactory(Context context) {
+    public static Intent createAccountIntentFactory(Context context) {
         return new Intent(context, CreateAccountActivity.class);
     }
 

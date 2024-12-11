@@ -26,6 +26,16 @@ public class CharacterTrackerRepository {
 
     private final CharacterDAO characterDAO;
 
+    private final InventoryDAO inventoryDAO;
+
+    private final InventoryItemDAO inventoryItemDAO;
+
+    private final SpellBookDAO spellBookDAO;
+
+    private final SpellDAO spellDAO;
+
+    private final MacroDAO macroDAO;
+
     private static CharacterTrackerRepository repository;
 
     private InventoryDAO inventoryDAO;
@@ -47,6 +57,11 @@ public class CharacterTrackerRepository {
         CharacterTrackerDatabase db = CharacterTrackerDatabase.getDatabase(application);
         this.userDAO = db.userDao();
         this.characterDAO = db.characterDao();
+        this.inventoryDAO = db.inventoryDao();
+        this.inventoryItemDAO = db.inventoryItemDao();
+        this.spellBookDAO = db.spellBookDao();
+        this.spellDAO = db.spellDao();
+        this.macroDAO = db.macroDao();
     }
 
 
