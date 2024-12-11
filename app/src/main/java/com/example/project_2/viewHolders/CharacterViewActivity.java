@@ -30,7 +30,7 @@ public class CharacterViewActivity extends AppCompatActivity {
     private ActivityCharacterViewBinding binding;
     private CharacterTrackerRepository repository;
     private User user;
-    private DNDCharacter character;
+    DNDCharacter character;
 
     public static final String CHARACTER_VIEW_CHARACTER_ID = "com.example.project_2.viewHolders.CHARACTER_VIEW_CHARACTER_ID";
 
@@ -59,6 +59,7 @@ public class CharacterViewActivity extends AppCompatActivity {
         if (characterId != -1) {
             repository.getCharacterByCharacterId(characterId).observe(this, character -> {
                 if (character != null) {
+                    this.character = character;
                     displayCharacterDetails(character);  // Display character's details
                 } else {
                     toastMaker("Character not found.");
@@ -137,7 +138,5 @@ public class CharacterViewActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.CharacterViewFragment,fragment);
         fragmentTransaction.commit();
     }
-
-
 
 }

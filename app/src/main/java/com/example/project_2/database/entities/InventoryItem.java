@@ -111,4 +111,8 @@ public class InventoryItem {
                 ", itemRarity='" + itemRarity + '\'' +
                 '}';
     }
+
+    public CharSequence toStringSummary() {
+        return itemWeight + " lbs" + " | " + itemQuantity + " | " + itemName;
+    }
 }

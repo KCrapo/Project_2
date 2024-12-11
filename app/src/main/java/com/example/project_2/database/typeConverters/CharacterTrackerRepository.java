@@ -38,16 +38,6 @@ public class CharacterTrackerRepository {
 
     private static CharacterTrackerRepository repository;
 
-    private InventoryDAO inventoryDAO;
-
-    private InventoryItemDAO inventoryItemDAO;
-
-    private SpellBookDAO spellBookDAO;
-
-    private SpellDAO spellDAO;
-
-    private MacroDAO macroDAO;
-
 
     /**
      *
@@ -206,7 +196,7 @@ public class CharacterTrackerRepository {
     }
 
     public LiveData<InventoryItem> getInventoryItemByItemId(int itemId) {
-        return (inventoryItemDAO.getInventoryItemsById(itemId));
+        return (inventoryItemDAO.getInventoryItemById(itemId));
     }
 
     public LiveData<InventoryItem> getInventoryItemByItemName(String itemName) {
@@ -244,10 +234,10 @@ public class CharacterTrackerRepository {
     }
 
     public List<InventoryItem> getInventoryItemsByCharacterId(int characterId) {
-        LiveData<List<Inventory>> inventory = inventoryDAO.getInventoryByCharacterId(characterId);
+        LiveData<List<Inventory>> inventory = getInventoryByCharacterId(characterId);
         List<InventoryItem> inventoryItems = new ArrayList<>();
-        for (Inventory inv : Objects.requireNonNull(inventory.getValue())) {
-            inventoryItems.add(inventoryItemDAO.getInventoryItemsById(inv.getItemId()).getValue());
+        for (int i = 0; i < inventory.getValue().size(); i++) {
+            inventoryItems.add(inventoryItemDAO.getInventoryItemById(inventory.getValue().get(i).getItemId()).getValue());
         }
         return (inventoryItems);
     }
