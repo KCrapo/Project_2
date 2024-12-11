@@ -14,7 +14,7 @@
         android:layout_height="60dp"
         android:layout_margin="16dp"
         android:gravity="center"
-        android:text="@string/place_holder_for_scrolling_character_menu"
+        android:text="@string/select_a_character"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
