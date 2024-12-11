@@ -3,6 +3,7 @@ package com.example.project_2.database.typeConverters;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import com.example.project_2.database.entities.DNDCharacter;
@@ -16,6 +17,7 @@ import com.example.project_2.viewHolders.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -145,10 +147,6 @@ public class CharacterTrackerRepository {
         return (characterDAO.getAllCharactersByUserId(userId));
     }
 
-
-
-
-
     //Methods to get Inventories
     public LiveData<List<Inventory>> getInventoryByCharacterId(int characterId) {
         return (inventoryDAO.getInventoryByCharacterId(characterId));
@@ -198,20 +196,20 @@ public class CharacterTrackerRepository {
         return (inventoryItemDAO.getAllItems());
     }
 
-    public LiveData<InventoryItem> getInventoryByItemId(int itemId) {
+    public LiveData<InventoryItem> getInventoryItemByItemId(int itemId) {
         return (inventoryItemDAO.getInventoryItemById(itemId));
     }
 
-    public LiveData<InventoryItem> getInventoryByItemName(String itemName) {
+    public LiveData<InventoryItem> getInventoryItemByItemName(String itemName) {
         return (inventoryItemDAO.getInventoryItemByItemName(itemName));
     }
 
-    public LiveData<InventoryItem> getInventoryByItemCategory(String itemCategory) {
-        return (inventoryItemDAO.getInventoryItemByItemCategory(itemCategory));
+    public LiveData<List<InventoryItem>> getInventoryItemByItemCategory(String itemCategory) {
+        return (inventoryItemDAO.getInventoryItemsByItemCategory(itemCategory));
     }
 
-    public LiveData<InventoryItem> getInventoryByItemRarity(String itemRarity) {
-        return (inventoryItemDAO.getInventoryItemByItemRarity(itemRarity));
+    public LiveData<List<InventoryItem>> getInventoryItemByItemRarity(String itemRarity) {
+        return (inventoryItemDAO.getInventoryItemsByItemRarity(itemRarity));
     }
 
     public void insertInventoryItem(InventoryItem inventoryItem) {
@@ -310,7 +308,7 @@ public class CharacterTrackerRepository {
     }
 
     public LiveData<List<Macro>> getMacroByCharacterId(int characterId) {
-        return (macroDAO.getMacroByCharacterId(characterId));
+        return (macroDAO.getMacrosByCharacterId(characterId));
     }
 
     public void insertMacro(Macro macro) {

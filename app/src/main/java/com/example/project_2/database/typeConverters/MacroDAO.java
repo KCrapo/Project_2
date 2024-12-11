@@ -30,7 +30,7 @@ public interface MacroDAO {
     LiveData<List<Macro>> getAllMacros();
 
     @Query("SELECT * from "+ "MacrosTable" + " WHERE characterId == :characterId")
-    LiveData<List<Macro>> getMacroByCharacterId(int characterId);
+    LiveData<List<Macro>> getMacrosByCharacterId(int characterId);
 
     @Query("SELECT * from "+ "MacrosTable" + " WHERE macroId == :macroId")
     LiveData<Macro> getMacroByMacroId(int macroId);

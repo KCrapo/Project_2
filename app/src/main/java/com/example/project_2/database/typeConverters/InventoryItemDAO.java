@@ -36,8 +36,8 @@ public interface InventoryItemDAO {
     LiveData<InventoryItem> getInventoryItemByItemName(String itemName);
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemCategory == :itemCategory")
-    LiveData<InventoryItem> getInventoryItemByItemCategory(String itemCategory);
+    LiveData<List<InventoryItem>> getInventoryItemsByItemCategory(String itemCategory);
 
     @Query("SELECT * from "+ "InventoryItemTable"+ " WHERE itemRarity == :itemRarity")
-    LiveData<InventoryItem> getInventoryItemByItemRarity(String itemRarity);
+    LiveData<List<InventoryItem>> getInventoryItemsByItemRarity(String itemRarity);
 }
