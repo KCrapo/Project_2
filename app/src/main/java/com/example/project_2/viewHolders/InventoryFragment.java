@@ -3,6 +3,7 @@ package com.example.project_2.viewHolders;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,9 +14,11 @@ import android.widget.TextView;
 
 import com.example.project_2.R;
 import com.example.project_2.database.entities.DNDCharacter;
+import com.example.project_2.database.entities.Inventory;
 import com.example.project_2.database.entities.InventoryItem;
 import com.example.project_2.database.typeConverters.CharacterTrackerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,6 +32,8 @@ public class InventoryFragment extends Fragment {
 
     CharacterTrackerRepository repository;
 
+    StringBuilder inventoryString = new StringBuilder();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,12 +45,28 @@ public class InventoryFragment extends Fragment {
         CharacterViewActivity activity = (CharacterViewActivity) getActivity();
         character = activity.character;
 
+
+
         if(character != null){
-            List<InventoryItem> inventory = repository.getInventoryItemsByCharacterId(character.getCharacterId());
-            for(InventoryItem item : inventory){
-                inventoryTextView.append(item.toStringSummary());
-            }
+
+            repository.getInventoryByCharacterId(character.getCharacterId()).observe(getViewLifecycleOwner(), inventory -> {
+                if(inventory != null){
+                    List<InventoryItem> inventoryItems = new ArrayList<>();
+                    for(Inventory inv: inventory){
+                        repository.getInventoryItemByItemId(inv.getItemId()).observe(getViewLifecycleOwner(), inventoryItems::add);
+                    }
+
+                    for(InventoryItem item : inventoryItems){
+                        inventoryString.append(item.toStringSummary()).append("\n");
+                    }
+
+                }
+            });
         }
+
+
+        inventoryTextView.setText(inventoryString.toString());
+
 
 
         return view;

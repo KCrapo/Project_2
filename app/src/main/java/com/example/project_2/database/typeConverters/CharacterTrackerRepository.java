@@ -3,6 +3,7 @@ package com.example.project_2.database.typeConverters;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import com.example.project_2.database.entities.DNDCharacter;
@@ -231,15 +232,6 @@ public class CharacterTrackerRepository {
 
     public void deleteAllInventoryItems() {
         CharacterTrackerDatabase.databaseWriteExecutor.execute(inventoryItemDAO::deleteAll);
-    }
-
-    public List<InventoryItem> getInventoryItemsByCharacterId(int characterId) {
-        LiveData<List<Inventory>> inventory = getInventoryByCharacterId(characterId);
-        List<InventoryItem> inventoryItems = new ArrayList<>();
-        for (int i = 0; i < inventory.getValue().size(); i++) {
-            inventoryItems.add(inventoryItemDAO.getInventoryItemById(inventory.getValue().get(i).getItemId()).getValue());
-        }
-        return (inventoryItems);
     }
 
 
